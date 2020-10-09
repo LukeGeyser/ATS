@@ -16,5 +16,15 @@ namespace ATS
         {
             InitializeComponent();
         }
+
+        private void lblSecret_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_ActivateMonitoring_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
