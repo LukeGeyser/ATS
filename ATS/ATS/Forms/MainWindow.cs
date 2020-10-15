@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATS.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,7 @@ namespace ATS
 
         private void btn_ActivateMonitoring_Click(object sender, EventArgs e)
         {
-
+            ValrService.Test("", "", "GET", "account/balances");
         }
 
         private void lbl_Lunoheader_Click(object sender, EventArgs e)
