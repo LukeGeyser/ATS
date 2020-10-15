@@ -30,10 +30,10 @@
         {
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBitmapKey = new System.Windows.Forms.TextBox();
+            this.txtBitmapCustID = new System.Windows.Forms.TextBox();
+            this.txtVALRSecret = new System.Windows.Forms.TextBox();
+            this.txtVALRKeyId = new System.Windows.Forms.TextBox();
             this.lbl_APIKey = new System.Windows.Forms.Label();
             this.lbl_cust_id = new System.Windows.Forms.Label();
             this.lbl_bitmapauth = new System.Windows.Forms.Label();
@@ -90,10 +90,10 @@
             // 
             // pnl_Inputs
             // 
-            this.pnl_Inputs.Controls.Add(this.textBox5);
-            this.pnl_Inputs.Controls.Add(this.textBox4);
-            this.pnl_Inputs.Controls.Add(this.textBox3);
-            this.pnl_Inputs.Controls.Add(this.textBox2);
+            this.pnl_Inputs.Controls.Add(this.txtBitmapKey);
+            this.pnl_Inputs.Controls.Add(this.txtBitmapCustID);
+            this.pnl_Inputs.Controls.Add(this.txtVALRSecret);
+            this.pnl_Inputs.Controls.Add(this.txtVALRKeyId);
             this.pnl_Inputs.Controls.Add(this.lbl_APIKey);
             this.pnl_Inputs.Controls.Add(this.lbl_cust_id);
             this.pnl_Inputs.Controls.Add(this.lbl_bitmapauth);
@@ -112,33 +112,33 @@
             this.pnl_Inputs.Size = new System.Drawing.Size(989, 189);
             this.pnl_Inputs.TabIndex = 1;
             // 
-            // textBox5
+            // txtBitmapKey
             // 
-            this.textBox5.Location = new System.Drawing.Point(623, 162);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(254, 20);
-            this.textBox5.TabIndex = 17;
+            this.txtBitmapKey.Location = new System.Drawing.Point(623, 162);
+            this.txtBitmapKey.Name = "txtBitmapKey";
+            this.txtBitmapKey.Size = new System.Drawing.Size(254, 20);
+            this.txtBitmapKey.TabIndex = 17;
             // 
-            // textBox4
+            // txtBitmapCustID
             // 
-            this.textBox4.Location = new System.Drawing.Point(623, 133);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(254, 20);
-            this.textBox4.TabIndex = 16;
+            this.txtBitmapCustID.Location = new System.Drawing.Point(623, 133);
+            this.txtBitmapCustID.Name = "txtBitmapCustID";
+            this.txtBitmapCustID.Size = new System.Drawing.Size(254, 20);
+            this.txtBitmapCustID.TabIndex = 16;
             // 
-            // textBox3
+            // txtVALRSecret
             // 
-            this.textBox3.Location = new System.Drawing.Point(623, 85);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 20);
-            this.textBox3.TabIndex = 15;
+            this.txtVALRSecret.Location = new System.Drawing.Point(623, 85);
+            this.txtVALRSecret.Name = "txtVALRSecret";
+            this.txtVALRSecret.Size = new System.Drawing.Size(254, 20);
+            this.txtVALRSecret.TabIndex = 15;
             // 
-            // textBox2
+            // txtVALRKeyId
             // 
-            this.textBox2.Location = new System.Drawing.Point(623, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 20);
-            this.textBox2.TabIndex = 14;
+            this.txtVALRKeyId.Location = new System.Drawing.Point(623, 59);
+            this.txtVALRKeyId.Name = "txtVALRKeyId";
+            this.txtVALRKeyId.Size = new System.Drawing.Size(254, 20);
+            this.txtVALRKeyId.TabIndex = 14;
             // 
             // lbl_APIKey
             // 
@@ -191,9 +191,10 @@
             this.lbl_Lunoheader.AutoSize = true;
             this.lbl_Lunoheader.Location = new System.Drawing.Point(510, 42);
             this.lbl_Lunoheader.Name = "lbl_Lunoheader";
-            this.lbl_Lunoheader.Size = new System.Drawing.Size(102, 13);
+            this.lbl_Lunoheader.Size = new System.Drawing.Size(106, 13);
             this.lbl_Lunoheader.TabIndex = 8;
-            this.lbl_Lunoheader.Text = "Luno Authentication";
+            this.lbl_Lunoheader.Text = "VALR Authentication";
+            this.lbl_Lunoheader.Click += new System.EventHandler(this.lbl_Lunoheader_Click);
             // 
             // textBox1
             // 
@@ -501,16 +502,16 @@
         private System.Windows.Forms.Label lbl_tradeIncre;
         private System.Windows.Forms.ComboBox cmb_exchangerate;
         private System.Windows.Forms.Label lbl_ExhcangeRate;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtVALRKeyId;
         private System.Windows.Forms.Label lbl_APIKey;
         private System.Windows.Forms.Label lbl_cust_id;
         private System.Windows.Forms.Label lbl_bitmapauth;
         private System.Windows.Forms.Label lblSecret;
         private System.Windows.Forms.Label lbl_keyID;
         private System.Windows.Forms.Label lbl_Lunoheader;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBitmapKey;
+        private System.Windows.Forms.TextBox txtBitmapCustID;
+        private System.Windows.Forms.TextBox txtVALRSecret;
         private System.Windows.Forms.Panel pnl_monitor;
         private System.Windows.Forms.Button btn_ResetHighestMargin;
         private System.Windows.Forms.TextBox txtHighestMargin;
