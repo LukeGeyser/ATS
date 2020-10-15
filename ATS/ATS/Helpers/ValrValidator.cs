@@ -36,7 +36,7 @@ namespace ATS.Helpers
          * as well as sent along in the X-VALR-TIMESTAMP header of the request
          */
 
-        private static string GetTimeStamp()
+        public static string GetTimeStamp()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
         }
