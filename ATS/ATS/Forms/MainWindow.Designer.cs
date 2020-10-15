@@ -30,23 +30,28 @@
         {
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
-            this.lbl_ExhcangeRate = new System.Windows.Forms.Label();
-            this.cmb_exchangerate = new System.Windows.Forms.ComboBox();
-            this.lbl_tradeIncre = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lbl_requiredmargin = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbl_Lunoheader = new System.Windows.Forms.Label();
-            this.lbl_keyID = new System.Windows.Forms.Label();
-            this.lblSecret = new System.Windows.Forms.Label();
-            this.lbl_bitmapauth = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.lbl_APIKey = new System.Windows.Forms.Label();
             this.lbl_cust_id = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.lbl_bitmapauth = new System.Windows.Forms.Label();
+            this.lblSecret = new System.Windows.Forms.Label();
+            this.lbl_keyID = new System.Windows.Forms.Label();
+            this.lbl_Lunoheader = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_requiredmargin = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lbl_tradeIncre = new System.Windows.Forms.Label();
+            this.cmb_exchangerate = new System.Windows.Forms.ComboBox();
+            this.lbl_ExhcangeRate = new System.Windows.Forms.Label();
             this.pnl_monitor = new System.Windows.Forms.Panel();
+            this.btn_ResetHighestMargin = new System.Windows.Forms.Button();
+            this.txtHighestMargin = new System.Windows.Forms.TextBox();
+            this.lbl_highestmargin = new System.Windows.Forms.Label();
+            this.cmb_bitmapConverted = new System.Windows.Forms.ComboBox();
+            this.lbl_bitmapconverted = new System.Windows.Forms.Label();
             this.txt_currentmargin = new System.Windows.Forms.TextBox();
             this.lbl_currentmargin = new System.Windows.Forms.Label();
             this.cmb_BitmapAskPrice = new System.Windows.Forms.ComboBox();
@@ -54,23 +59,18 @@
             this.cmb_VALRBidPrice = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lbl_valrbidprice = new System.Windows.Forms.Label();
-            this.lbl_bitmapconverted = new System.Windows.Forms.Label();
-            this.cmb_bitmapConverted = new System.Windows.Forms.ComboBox();
-            this.txtHighestMargin = new System.Windows.Forms.TextBox();
-            this.lbl_highestmargin = new System.Windows.Forms.Label();
-            this.btn_ResetHighestMargin = new System.Windows.Forms.Button();
             this.pnl_activations = new System.Windows.Forms.Panel();
+            this.btn_StopAll = new System.Windows.Forms.Button();
+            this.btn_ActivateTrading = new System.Windows.Forms.Button();
             this.btn_ActivateMonitoring = new System.Windows.Forms.Button();
             this.lbl_Activations = new System.Windows.Forms.Label();
-            this.btn_ActivateTrading = new System.Windows.Forms.Button();
-            this.btn_StopAll = new System.Windows.Forms.Button();
             this.pnl_ErrorLog = new System.Windows.Forms.Panel();
-            this.lbl_errorLog = new System.Windows.Forms.Label();
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.error = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Other_Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Exchange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_errorLog = new System.Windows.Forms.Label();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -112,92 +112,33 @@
             this.pnl_Inputs.Size = new System.Drawing.Size(989, 189);
             this.pnl_Inputs.TabIndex = 1;
             // 
-            // lbl_ExhcangeRate
+            // textBox5
             // 
-            this.lbl_ExhcangeRate.AutoSize = true;
-            this.lbl_ExhcangeRate.Location = new System.Drawing.Point(15, 61);
-            this.lbl_ExhcangeRate.Name = "lbl_ExhcangeRate";
-            this.lbl_ExhcangeRate.Size = new System.Drawing.Size(81, 13);
-            this.lbl_ExhcangeRate.TabIndex = 2;
-            this.lbl_ExhcangeRate.Text = "Exchange Rate";
+            this.textBox5.Location = new System.Drawing.Point(623, 162);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(254, 20);
+            this.textBox5.TabIndex = 17;
             // 
-            // cmb_exchangerate
+            // textBox4
             // 
-            this.cmb_exchangerate.FormattingEnabled = true;
-            this.cmb_exchangerate.Location = new System.Drawing.Point(141, 58);
-            this.cmb_exchangerate.Name = "cmb_exchangerate";
-            this.cmb_exchangerate.Size = new System.Drawing.Size(121, 21);
-            this.cmb_exchangerate.TabIndex = 3;
+            this.textBox4.Location = new System.Drawing.Point(623, 133);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(254, 20);
+            this.textBox4.TabIndex = 16;
             // 
-            // lbl_tradeIncre
+            // textBox3
             // 
-            this.lbl_tradeIncre.AutoSize = true;
-            this.lbl_tradeIncre.Location = new System.Drawing.Point(15, 112);
-            this.lbl_tradeIncre.Name = "lbl_tradeIncre";
-            this.lbl_tradeIncre.Size = new System.Drawing.Size(120, 13);
-            this.lbl_tradeIncre.TabIndex = 4;
-            this.lbl_tradeIncre.Text = "Bitcoin Trade Increment";
+            this.textBox3.Location = new System.Drawing.Point(623, 85);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(254, 20);
+            this.textBox3.TabIndex = 15;
             // 
-            // comboBox1
+            // textBox2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 109);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // lbl_requiredmargin
-            // 
-            this.lbl_requiredmargin.AutoSize = true;
-            this.lbl_requiredmargin.Location = new System.Drawing.Point(15, 165);
-            this.lbl_requiredmargin.Name = "lbl_requiredmargin";
-            this.lbl_requiredmargin.Size = new System.Drawing.Size(85, 13);
-            this.lbl_requiredmargin.TabIndex = 6;
-            this.lbl_requiredmargin.Text = "Required Margin";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(141, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
-            // 
-            // lbl_Lunoheader
-            // 
-            this.lbl_Lunoheader.AutoSize = true;
-            this.lbl_Lunoheader.Location = new System.Drawing.Point(510, 42);
-            this.lbl_Lunoheader.Name = "lbl_Lunoheader";
-            this.lbl_Lunoheader.Size = new System.Drawing.Size(102, 13);
-            this.lbl_Lunoheader.TabIndex = 8;
-            this.lbl_Lunoheader.Text = "Luno Authentication";
-            // 
-            // lbl_keyID
-            // 
-            this.lbl_keyID.AutoSize = true;
-            this.lbl_keyID.Location = new System.Drawing.Point(510, 66);
-            this.lbl_keyID.Name = "lbl_keyID";
-            this.lbl_keyID.Size = new System.Drawing.Size(42, 13);
-            this.lbl_keyID.TabIndex = 9;
-            this.lbl_keyID.Text = "Key ID:";
-            // 
-            // lblSecret
-            // 
-            this.lblSecret.AutoSize = true;
-            this.lblSecret.Location = new System.Drawing.Point(510, 92);
-            this.lblSecret.Name = "lblSecret";
-            this.lblSecret.Size = new System.Drawing.Size(41, 13);
-            this.lblSecret.TabIndex = 10;
-            this.lblSecret.Text = "Secret:";
-            this.lblSecret.Click += new System.EventHandler(this.lblSecret_Click);
-            // 
-            // lbl_bitmapauth
-            // 
-            this.lbl_bitmapauth.AutoSize = true;
-            this.lbl_bitmapauth.Location = new System.Drawing.Point(510, 117);
-            this.lbl_bitmapauth.Name = "lbl_bitmapauth";
-            this.lbl_bitmapauth.Size = new System.Drawing.Size(110, 13);
-            this.lbl_bitmapauth.TabIndex = 11;
-            this.lbl_bitmapauth.Text = "Bitmap Authentication";
+            this.textBox2.Location = new System.Drawing.Point(623, 59);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(254, 20);
+            this.textBox2.TabIndex = 14;
             // 
             // lbl_APIKey
             // 
@@ -217,33 +158,92 @@
             this.lbl_cust_id.TabIndex = 12;
             this.lbl_cust_id.Text = "Customer ID:";
             // 
-            // textBox2
+            // lbl_bitmapauth
             // 
-            this.textBox2.Location = new System.Drawing.Point(623, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 20);
-            this.textBox2.TabIndex = 14;
+            this.lbl_bitmapauth.AutoSize = true;
+            this.lbl_bitmapauth.Location = new System.Drawing.Point(510, 117);
+            this.lbl_bitmapauth.Name = "lbl_bitmapauth";
+            this.lbl_bitmapauth.Size = new System.Drawing.Size(110, 13);
+            this.lbl_bitmapauth.TabIndex = 11;
+            this.lbl_bitmapauth.Text = "Bitmap Authentication";
             // 
-            // textBox3
+            // lblSecret
             // 
-            this.textBox3.Location = new System.Drawing.Point(623, 85);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 20);
-            this.textBox3.TabIndex = 15;
+            this.lblSecret.AutoSize = true;
+            this.lblSecret.Location = new System.Drawing.Point(510, 92);
+            this.lblSecret.Name = "lblSecret";
+            this.lblSecret.Size = new System.Drawing.Size(41, 13);
+            this.lblSecret.TabIndex = 10;
+            this.lblSecret.Text = "Secret:";
+            this.lblSecret.Click += new System.EventHandler(this.lblSecret_Click);
             // 
-            // textBox4
+            // lbl_keyID
             // 
-            this.textBox4.Location = new System.Drawing.Point(623, 133);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(254, 20);
-            this.textBox4.TabIndex = 16;
+            this.lbl_keyID.AutoSize = true;
+            this.lbl_keyID.Location = new System.Drawing.Point(510, 66);
+            this.lbl_keyID.Name = "lbl_keyID";
+            this.lbl_keyID.Size = new System.Drawing.Size(42, 13);
+            this.lbl_keyID.TabIndex = 9;
+            this.lbl_keyID.Text = "Key ID:";
             // 
-            // textBox5
+            // lbl_Lunoheader
             // 
-            this.textBox5.Location = new System.Drawing.Point(623, 162);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(254, 20);
-            this.textBox5.TabIndex = 17;
+            this.lbl_Lunoheader.AutoSize = true;
+            this.lbl_Lunoheader.Location = new System.Drawing.Point(510, 42);
+            this.lbl_Lunoheader.Name = "lbl_Lunoheader";
+            this.lbl_Lunoheader.Size = new System.Drawing.Size(102, 13);
+            this.lbl_Lunoheader.TabIndex = 8;
+            this.lbl_Lunoheader.Text = "Luno Authentication";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(141, 158);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
+            // 
+            // lbl_requiredmargin
+            // 
+            this.lbl_requiredmargin.AutoSize = true;
+            this.lbl_requiredmargin.Location = new System.Drawing.Point(15, 165);
+            this.lbl_requiredmargin.Name = "lbl_requiredmargin";
+            this.lbl_requiredmargin.Size = new System.Drawing.Size(85, 13);
+            this.lbl_requiredmargin.TabIndex = 6;
+            this.lbl_requiredmargin.Text = "Required Margin";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(141, 109);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // lbl_tradeIncre
+            // 
+            this.lbl_tradeIncre.AutoSize = true;
+            this.lbl_tradeIncre.Location = new System.Drawing.Point(15, 112);
+            this.lbl_tradeIncre.Name = "lbl_tradeIncre";
+            this.lbl_tradeIncre.Size = new System.Drawing.Size(120, 13);
+            this.lbl_tradeIncre.TabIndex = 4;
+            this.lbl_tradeIncre.Text = "Bitcoin Trade Increment";
+            // 
+            // cmb_exchangerate
+            // 
+            this.cmb_exchangerate.FormattingEnabled = true;
+            this.cmb_exchangerate.Location = new System.Drawing.Point(141, 58);
+            this.cmb_exchangerate.Name = "cmb_exchangerate";
+            this.cmb_exchangerate.Size = new System.Drawing.Size(121, 21);
+            this.cmb_exchangerate.TabIndex = 3;
+            // 
+            // lbl_ExhcangeRate
+            // 
+            this.lbl_ExhcangeRate.AutoSize = true;
+            this.lbl_ExhcangeRate.Location = new System.Drawing.Point(15, 61);
+            this.lbl_ExhcangeRate.Name = "lbl_ExhcangeRate";
+            this.lbl_ExhcangeRate.Size = new System.Drawing.Size(81, 13);
+            this.lbl_ExhcangeRate.TabIndex = 2;
+            this.lbl_ExhcangeRate.Text = "Exchange Rate";
             // 
             // pnl_monitor
             // 
@@ -259,10 +259,52 @@
             this.pnl_monitor.Controls.Add(this.cmb_VALRBidPrice);
             this.pnl_monitor.Controls.Add(this.label9);
             this.pnl_monitor.Controls.Add(this.lbl_valrbidprice);
-            this.pnl_monitor.Location = new System.Drawing.Point(12, 191);
+            this.pnl_monitor.Location = new System.Drawing.Point(12, 194);
             this.pnl_monitor.Name = "pnl_monitor";
             this.pnl_monitor.Size = new System.Drawing.Size(989, 170);
             this.pnl_monitor.TabIndex = 18;
+            // 
+            // btn_ResetHighestMargin
+            // 
+            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(496, 71);
+            this.btn_ResetHighestMargin.Name = "btn_ResetHighestMargin";
+            this.btn_ResetHighestMargin.Size = new System.Drawing.Size(99, 43);
+            this.btn_ResetHighestMargin.TabIndex = 12;
+            this.btn_ResetHighestMargin.Text = "Reset Highest Margin";
+            this.btn_ResetHighestMargin.UseVisualStyleBackColor = true;
+            // 
+            // txtHighestMargin
+            // 
+            this.txtHighestMargin.Location = new System.Drawing.Point(404, 83);
+            this.txtHighestMargin.Name = "txtHighestMargin";
+            this.txtHighestMargin.Size = new System.Drawing.Size(74, 20);
+            this.txtHighestMargin.TabIndex = 11;
+            // 
+            // lbl_highestmargin
+            // 
+            this.lbl_highestmargin.AutoSize = true;
+            this.lbl_highestmargin.Location = new System.Drawing.Point(322, 86);
+            this.lbl_highestmargin.Name = "lbl_highestmargin";
+            this.lbl_highestmargin.Size = new System.Drawing.Size(78, 13);
+            this.lbl_highestmargin.TabIndex = 10;
+            this.lbl_highestmargin.Text = "Highest Margin";
+            // 
+            // cmb_bitmapConverted
+            // 
+            this.cmb_bitmapConverted.FormattingEnabled = true;
+            this.cmb_bitmapConverted.Location = new System.Drawing.Point(141, 110);
+            this.cmb_bitmapConverted.Name = "cmb_bitmapConverted";
+            this.cmb_bitmapConverted.Size = new System.Drawing.Size(74, 21);
+            this.cmb_bitmapConverted.TabIndex = 9;
+            // 
+            // lbl_bitmapconverted
+            // 
+            this.lbl_bitmapconverted.AutoSize = true;
+            this.lbl_bitmapconverted.Location = new System.Drawing.Point(15, 113);
+            this.lbl_bitmapconverted.Name = "lbl_bitmapconverted";
+            this.lbl_bitmapconverted.Size = new System.Drawing.Size(118, 13);
+            this.lbl_bitmapconverted.TabIndex = 8;
+            this.lbl_bitmapconverted.Text = "Bitmap Converted Price";
             // 
             // txt_currentmargin
             // 
@@ -324,48 +366,6 @@
             this.lbl_valrbidprice.TabIndex = 2;
             this.lbl_valrbidprice.Text = "VALR Bid Price";
             // 
-            // lbl_bitmapconverted
-            // 
-            this.lbl_bitmapconverted.AutoSize = true;
-            this.lbl_bitmapconverted.Location = new System.Drawing.Point(15, 113);
-            this.lbl_bitmapconverted.Name = "lbl_bitmapconverted";
-            this.lbl_bitmapconverted.Size = new System.Drawing.Size(118, 13);
-            this.lbl_bitmapconverted.TabIndex = 8;
-            this.lbl_bitmapconverted.Text = "Bitmap Converted Price";
-            // 
-            // cmb_bitmapConverted
-            // 
-            this.cmb_bitmapConverted.FormattingEnabled = true;
-            this.cmb_bitmapConverted.Location = new System.Drawing.Point(141, 110);
-            this.cmb_bitmapConverted.Name = "cmb_bitmapConverted";
-            this.cmb_bitmapConverted.Size = new System.Drawing.Size(74, 21);
-            this.cmb_bitmapConverted.TabIndex = 9;
-            // 
-            // txtHighestMargin
-            // 
-            this.txtHighestMargin.Location = new System.Drawing.Point(404, 83);
-            this.txtHighestMargin.Name = "txtHighestMargin";
-            this.txtHighestMargin.Size = new System.Drawing.Size(74, 20);
-            this.txtHighestMargin.TabIndex = 11;
-            // 
-            // lbl_highestmargin
-            // 
-            this.lbl_highestmargin.AutoSize = true;
-            this.lbl_highestmargin.Location = new System.Drawing.Point(322, 86);
-            this.lbl_highestmargin.Name = "lbl_highestmargin";
-            this.lbl_highestmargin.Size = new System.Drawing.Size(78, 13);
-            this.lbl_highestmargin.TabIndex = 10;
-            this.lbl_highestmargin.Text = "Highest Margin";
-            // 
-            // btn_ResetHighestMargin
-            // 
-            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(496, 71);
-            this.btn_ResetHighestMargin.Name = "btn_ResetHighestMargin";
-            this.btn_ResetHighestMargin.Size = new System.Drawing.Size(99, 43);
-            this.btn_ResetHighestMargin.TabIndex = 12;
-            this.btn_ResetHighestMargin.Text = "Reset Highest Margin";
-            this.btn_ResetHighestMargin.UseVisualStyleBackColor = true;
-            // 
             // pnl_activations
             // 
             this.pnl_activations.Controls.Add(this.btn_StopAll);
@@ -376,6 +376,24 @@
             this.pnl_activations.Name = "pnl_activations";
             this.pnl_activations.Size = new System.Drawing.Size(989, 83);
             this.pnl_activations.TabIndex = 19;
+            // 
+            // btn_StopAll
+            // 
+            this.btn_StopAll.Location = new System.Drawing.Point(623, 31);
+            this.btn_StopAll.Name = "btn_StopAll";
+            this.btn_StopAll.Size = new System.Drawing.Size(99, 43);
+            this.btn_StopAll.TabIndex = 14;
+            this.btn_StopAll.Text = "Stop All";
+            this.btn_StopAll.UseVisualStyleBackColor = true;
+            // 
+            // btn_ActivateTrading
+            // 
+            this.btn_ActivateTrading.Location = new System.Drawing.Point(435, 31);
+            this.btn_ActivateTrading.Name = "btn_ActivateTrading";
+            this.btn_ActivateTrading.Size = new System.Drawing.Size(99, 43);
+            this.btn_ActivateTrading.TabIndex = 13;
+            this.btn_ActivateTrading.Text = "Activate Trading";
+            this.btn_ActivateTrading.UseVisualStyleBackColor = true;
             // 
             // btn_ActivateMonitoring
             // 
@@ -397,24 +415,6 @@
             this.lbl_Activations.TabIndex = 0;
             this.lbl_Activations.Text = "Activatons";
             // 
-            // btn_ActivateTrading
-            // 
-            this.btn_ActivateTrading.Location = new System.Drawing.Point(435, 31);
-            this.btn_ActivateTrading.Name = "btn_ActivateTrading";
-            this.btn_ActivateTrading.Size = new System.Drawing.Size(99, 43);
-            this.btn_ActivateTrading.TabIndex = 13;
-            this.btn_ActivateTrading.Text = "Activate Trading";
-            this.btn_ActivateTrading.UseVisualStyleBackColor = true;
-            // 
-            // btn_StopAll
-            // 
-            this.btn_StopAll.Location = new System.Drawing.Point(623, 31);
-            this.btn_StopAll.Name = "btn_StopAll";
-            this.btn_StopAll.Size = new System.Drawing.Size(99, 43);
-            this.btn_StopAll.TabIndex = 14;
-            this.btn_StopAll.Text = "Stop All";
-            this.btn_StopAll.UseVisualStyleBackColor = true;
-            // 
             // pnl_ErrorLog
             // 
             this.pnl_ErrorLog.Controls.Add(this.dgv_errorLog);
@@ -423,16 +423,6 @@
             this.pnl_ErrorLog.Name = "pnl_ErrorLog";
             this.pnl_ErrorLog.Size = new System.Drawing.Size(989, 210);
             this.pnl_ErrorLog.TabIndex = 20;
-            // 
-            // lbl_errorLog
-            // 
-            this.lbl_errorLog.AutoSize = true;
-            this.lbl_errorLog.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_errorLog.Location = new System.Drawing.Point(14, 9);
-            this.lbl_errorLog.Name = "lbl_errorLog";
-            this.lbl_errorLog.Size = new System.Drawing.Size(98, 24);
-            this.lbl_errorLog.TabIndex = 0;
-            this.lbl_errorLog.Text = "Error Log";
             // 
             // dgv_errorLog
             // 
@@ -466,6 +456,16 @@
             // 
             this.Exchange.HeaderText = "Exchange";
             this.Exchange.Name = "Exchange";
+            // 
+            // lbl_errorLog
+            // 
+            this.lbl_errorLog.AutoSize = true;
+            this.lbl_errorLog.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_errorLog.Location = new System.Drawing.Point(14, 9);
+            this.lbl_errorLog.Name = "lbl_errorLog";
+            this.lbl_errorLog.Size = new System.Drawing.Size(98, 24);
+            this.lbl_errorLog.TabIndex = 0;
+            this.lbl_errorLog.Text = "Error Log";
             // 
             // MainWindow
             // 
