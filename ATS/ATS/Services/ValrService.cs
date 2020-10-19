@@ -23,7 +23,7 @@ namespace ATS.Services
             {
                 rqstSig = ValrValidator.SignInRequest(ApiKeySecret, _timeStamp, Verb, Path, Body);
 
-                var client = new RestClient(string.Format($"https://api.valr.com/{Path}"));
+                var client = new RestClient(string.Format($"https://api.valr.com{Path}"));
 
                 client.Timeout = -1;
 
