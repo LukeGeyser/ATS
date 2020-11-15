@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
+            this.lblBTIError = new System.Windows.Forms.Label();
+            this.txtER = new System.Windows.Forms.TextBox();
+            this.txtBTI = new System.Windows.Forms.TextBox();
             this.txtBitmapKey = new System.Windows.Forms.TextBox();
             this.txtBitmapCustID = new System.Windows.Forms.TextBox();
             this.txtVALRSecret = new System.Windows.Forms.TextBox();
@@ -45,6 +49,9 @@
             this.lbl_tradeIncre = new System.Windows.Forms.Label();
             this.lbl_ExhcangeRate = new System.Windows.Forms.Label();
             this.pnl_monitor = new System.Windows.Forms.Panel();
+            this.txtBitstampConvertedPrice = new System.Windows.Forms.TextBox();
+            this.txtBitstampAskPrice = new System.Windows.Forms.TextBox();
+            this.txtVALRBidPrice = new System.Windows.Forms.TextBox();
             this.btn_ResetHighestMargin = new System.Windows.Forms.Button();
             this.txtHighestMargin = new System.Windows.Forms.TextBox();
             this.lbl_highestmargin = new System.Windows.Forms.Label();
@@ -66,17 +73,13 @@
             this.Other_Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Exchange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_errorLog = new System.Windows.Forms.Label();
-            this.txtBTI = new System.Windows.Forms.TextBox();
-            this.txtER = new System.Windows.Forms.TextBox();
-            this.lblBTIError = new System.Windows.Forms.Label();
-            this.txtVALRBidPrice = new System.Windows.Forms.TextBox();
-            this.txtBitstampAskPrice = new System.Windows.Forms.TextBox();
-            this.txtBitstampConvertedPrice = new System.Windows.Forms.TextBox();
+            this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
             this.pnl_ErrorLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_errorLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainWindowBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_Inputs
@@ -113,6 +116,31 @@
             this.pnl_Inputs.Name = "pnl_Inputs";
             this.pnl_Inputs.Size = new System.Drawing.Size(989, 189);
             this.pnl_Inputs.TabIndex = 1;
+            // 
+            // lblBTIError
+            // 
+            this.lblBTIError.AutoSize = true;
+            this.lblBTIError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblBTIError.Location = new System.Drawing.Point(268, 112);
+            this.lblBTIError.Name = "lblBTIError";
+            this.lblBTIError.Size = new System.Drawing.Size(120, 13);
+            this.lblBTIError.TabIndex = 20;
+            this.lblBTIError.Text = "Bitcoin Trade Increment";
+            // 
+            // txtER
+            // 
+            this.txtER.Location = new System.Drawing.Point(141, 58);
+            this.txtER.Name = "txtER";
+            this.txtER.Size = new System.Drawing.Size(121, 20);
+            this.txtER.TabIndex = 19;
+            // 
+            // txtBTI
+            // 
+            this.txtBTI.Location = new System.Drawing.Point(141, 109);
+            this.txtBTI.Name = "txtBTI";
+            this.txtBTI.Size = new System.Drawing.Size(121, 20);
+            this.txtBTI.TabIndex = 18;
+            this.txtBTI.TextChanged += new System.EventHandler(this.txtBTI_TextChanged);
             // 
             // txtBitmapKey
             // 
@@ -250,6 +278,27 @@
             this.pnl_monitor.Name = "pnl_monitor";
             this.pnl_monitor.Size = new System.Drawing.Size(989, 170);
             this.pnl_monitor.TabIndex = 18;
+            // 
+            // txtBitstampConvertedPrice
+            // 
+            this.txtBitstampConvertedPrice.Location = new System.Drawing.Point(141, 110);
+            this.txtBitstampConvertedPrice.Name = "txtBitstampConvertedPrice";
+            this.txtBitstampConvertedPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtBitstampConvertedPrice.TabIndex = 23;
+            // 
+            // txtBitstampAskPrice
+            // 
+            this.txtBitstampAskPrice.Location = new System.Drawing.Point(141, 76);
+            this.txtBitstampAskPrice.Name = "txtBitstampAskPrice";
+            this.txtBitstampAskPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtBitstampAskPrice.TabIndex = 22;
+            // 
+            // txtVALRBidPrice
+            // 
+            this.txtVALRBidPrice.Location = new System.Drawing.Point(141, 40);
+            this.txtVALRBidPrice.Name = "txtVALRBidPrice";
+            this.txtVALRBidPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtVALRBidPrice.TabIndex = 21;
             // 
             // btn_ResetHighestMargin
             // 
@@ -430,51 +479,9 @@
             this.lbl_errorLog.TabIndex = 0;
             this.lbl_errorLog.Text = "Error Log";
             // 
-            // txtBTI
+            // mainWindowBindingSource
             // 
-            this.txtBTI.Location = new System.Drawing.Point(141, 109);
-            this.txtBTI.Name = "txtBTI";
-            this.txtBTI.Size = new System.Drawing.Size(121, 20);
-            this.txtBTI.TabIndex = 18;
-            this.txtBTI.TextChanged += new System.EventHandler(this.txtBTI_TextChanged);
-            // 
-            // txtER
-            // 
-            this.txtER.Location = new System.Drawing.Point(141, 58);
-            this.txtER.Name = "txtER";
-            this.txtER.Size = new System.Drawing.Size(121, 20);
-            this.txtER.TabIndex = 19;
-            // 
-            // lblBTIError
-            // 
-            this.lblBTIError.AutoSize = true;
-            this.lblBTIError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblBTIError.Location = new System.Drawing.Point(268, 112);
-            this.lblBTIError.Name = "lblBTIError";
-            this.lblBTIError.Size = new System.Drawing.Size(120, 13);
-            this.lblBTIError.TabIndex = 20;
-            this.lblBTIError.Text = "Bitcoin Trade Increment";
-            // 
-            // txtVALRBidPrice
-            // 
-            this.txtVALRBidPrice.Location = new System.Drawing.Point(141, 40);
-            this.txtVALRBidPrice.Name = "txtVALRBidPrice";
-            this.txtVALRBidPrice.Size = new System.Drawing.Size(121, 20);
-            this.txtVALRBidPrice.TabIndex = 21;
-            // 
-            // txtBitstampAskPrice
-            // 
-            this.txtBitstampAskPrice.Location = new System.Drawing.Point(141, 76);
-            this.txtBitstampAskPrice.Name = "txtBitstampAskPrice";
-            this.txtBitstampAskPrice.Size = new System.Drawing.Size(121, 20);
-            this.txtBitstampAskPrice.TabIndex = 22;
-            // 
-            // txtBitstampConvertedPrice
-            // 
-            this.txtBitstampConvertedPrice.Location = new System.Drawing.Point(141, 110);
-            this.txtBitstampConvertedPrice.Name = "txtBitstampConvertedPrice";
-            this.txtBitstampConvertedPrice.Size = new System.Drawing.Size(121, 20);
-            this.txtBitstampConvertedPrice.TabIndex = 23;
+            this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
             // 
             // MainWindow
             // 
@@ -496,6 +503,7 @@
             this.pnl_ErrorLog.ResumeLayout(false);
             this.pnl_ErrorLog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_errorLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainWindowBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -546,6 +554,7 @@
         private System.Windows.Forms.TextBox txtBitstampConvertedPrice;
         private System.Windows.Forms.TextBox txtBitstampAskPrice;
         private System.Windows.Forms.TextBox txtVALRBidPrice;
+        private System.Windows.Forms.BindingSource mainWindowBindingSource;
     }
 }
 

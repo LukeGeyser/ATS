@@ -59,6 +59,7 @@
     <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bitstamp\BitstampAsk.cs" />
     <Compile Include="Models\Bitstamp\BitstampOrderBook.cs" />
     <Compile Include="Models\VALR\AskBid.cs" />
     <Compile Include="Models\VALR\OrderBookVALR.cs" />
