@@ -16,6 +16,9 @@ namespace ATS
 {
     public partial class MainWindow : Form
     {
+
+        public double VBP = 0.0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,7 +39,10 @@ namespace ATS
             {
                 Debug.WriteLine(response.Content);
                 var AskBid = Newtonsoft.Json.JsonConvert.DeserializeObject<OrderBookVALR>(response.Content);
-                Validator.CalcVBP(AskBid.Bids, 0.00512686);
+                VBP = Validator.CalcVBP(new List<AskBid> { 
+                    new AskBid() { Price = "5", Quantity = "75" },
+                    new AskBid() { Price = "50", Quantity = "75" },
+                    new AskBid() { Price = "80", Quantity = "50" }}, 199);
                 int d = 3;
             }
 

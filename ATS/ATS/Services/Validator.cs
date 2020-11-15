@@ -15,18 +15,42 @@ namespace ATS.Services
 
             bids.OrderBy(bid => bid.Price);
 
+            List<AskBid> _checkedBids = new List<AskBid>();
+
             double totalVal = 0.0;
+            double quantities = 0.0D;
             double VBP = 0.0;
+            bool inital = false;
 
             foreach (var bid in bids)
             {
-                if ((totalVal + Convert.ToDouble(bid.Quantity)) >= BTI)
+                quantities += Convert.ToDouble(bid.Quantity);
+                _checkedBids.Add(bid);
+
+                if ((totalVal + Convert.ToDouble(bid.Quantity)) >= BTI && !inital)
                 {
-                    //totalVal += 
+                    VBP = Convert.ToDouble(bid.Quantity);
+                    inital = true;
+                    return VBP;
+                } 
+                else if (quantities >= BTI)
+                {
+                    VBP = ReturnVBPFromBids(_checkedBids, quantities);
                 }
+                
             }
 
             return 0;
+        }
+
+        private static double ReturnVBPFromBids(List<AskBid> bids, double quantity)
+        {
+            double VBP = 0.0;
+            foreach (var bid in bids)
+            {
+                VBP += Convert.ToDouble(bid.Price) * (Convert.ToDouble(bid.Quantity) / quantity);
+            }
+            return VBP;
         }
 
     }
