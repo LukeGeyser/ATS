@@ -13,7 +13,7 @@ namespace ATS.Services
     public static class ValrService
     {
 
-        public static IRestResponse Get(string ApiKey, string ApiKeySecret, string Verb, string Path, string Body = "")
+        public async static Task<IRestResponse> Get(string ApiKey, string ApiKeySecret, string Verb, string Path, string Body = "")
         {
             var _timeStamp = ValrValidator.GetTimeStamp();
             string rqstSig;
@@ -32,7 +32,7 @@ namespace ATS.Services
                 request.AddHeader("X-VALR-SIGNATURE", rqstSig);
                 request.AddHeader("X-VALR-TIMESTAMP", _timeStamp);
 
-                response = client.Execute(request);
+                response = await client.ExecuteAsync(request);
             }
             catch (Exception)
             {

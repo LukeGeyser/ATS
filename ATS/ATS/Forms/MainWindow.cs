@@ -35,7 +35,7 @@ namespace ATS
 
         private async void btn_ActivateMonitoring_Click(object sender, EventArgs e)
         {
-            IRestResponse response = ValrService.Get("881c6b0beb12baa68875b2c51bc82b5cfb175bfe3492cfdbe7af045afaf765f3", "99a5c2c177959c19856546b789cdc715737c50d0a6af61abc6a88e9428f50933", "GET", "/v1/marketdata/BTCZAR/orderbook");
+            IRestResponse response = await ValrService.Get("881c6b0beb12baa68875b2c51bc82b5cfb175bfe3492cfdbe7af045afaf765f3", "99a5c2c177959c19856546b789cdc715737c50d0a6af61abc6a88e9428f50933", "GET", "/v1/marketdata/BTCZAR/orderbook");
 
             if (!response.IsSuccessful)
                 Debug.WriteLine($"ERROR: {response.Content}");
@@ -57,7 +57,7 @@ namespace ATS
                 Debug.WriteLine(VBP);
             }
 
-            var BitStampResult = BitStampService.Get("x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "neyy1424");
+            var BitStampResult = await BitStampService.Get("x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "neyy1424");
 
             var orderbook = Newtonsoft.Json.JsonConvert.DeserializeObject<BitstampOrderBook>(BitStampResult);
             int a = 2; 

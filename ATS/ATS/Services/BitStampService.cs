@@ -14,7 +14,7 @@ namespace ATS.Services
 {
    public static class BitStampService
     {
-        public static string Get(string ApiKey, string ApiKeySecret, string clientID)
+        public async static Task<string> Get(string ApiKey, string ApiKeySecret, string clientID)
         {
             var _timestamp = BitStampValidator.GetTimeStamp();
            
@@ -31,7 +31,7 @@ namespace ATS.Services
 
                 string FormData = $"key={BitStampValidator.SignInRequest(ApiKey, _timestamp, clientID)}&nonce=" + _timestamp ;
                 StreamWriter formWrite = new StreamWriter(getApiRequest.GetRequestStream());
-                formWrite.Write(FormData);
+                await formWrite.WriteAsync(FormData);
                 formWrite.Flush();
                 formWrite.Close();
 
