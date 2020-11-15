@@ -33,7 +33,7 @@ namespace ATS
 
         }
 
-        private void btn_ActivateMonitoring_Click(object sender, EventArgs e)
+        private async void btn_ActivateMonitoring_Click(object sender, EventArgs e)
         {
             IRestResponse response = ValrService.Get("881c6b0beb12baa68875b2c51bc82b5cfb175bfe3492cfdbe7af045afaf765f3", "99a5c2c177959c19856546b789cdc715737c50d0a6af61abc6a88e9428f50933", "GET", "/v1/marketdata/BTCZAR/orderbook");
 
@@ -43,11 +43,18 @@ namespace ATS
             {
                 Debug.WriteLine(response.Content);
                 var AskBid = Newtonsoft.Json.JsonConvert.DeserializeObject<OrderBookVALR>(response.Content);
-                VBP = Validator.CalcVBP(new List<AskBid> { 
-                    new AskBid() { Price = "5", Quantity = "75" },
-                    new AskBid() { Price = "50", Quantity = "75" },
-                    new AskBid() { Price = "80", Quantity = "50" }}, 199);
+                VBP = Validator.CalcVBP(new List<AskBid> {
+                    new AskBid() { Price = "171149", Quantity = "11.00650027" },
+                    new AskBid() { Price = "170500", Quantity = "0.00052312" },
+                    new AskBid() { Price = "170181", Quantity = "0.99" },
+                    new AskBid() { Price = "170180", Quantity = "0.27486756" },
+                    new AskBid() { Price = "170178", Quantity = "0.1" },
+                    new AskBid() { Price = "170170", Quantity = "0.1" },
+                    new AskBid() { Price = "170007", Quantity = "0.32" },
+                    new AskBid() { Price = "170000", Quantity = "0.11764706" },
+                    new AskBid() { Price = "169355", Quantity = "0.1" },}, 5);
                 int d = 3;
+                Debug.WriteLine(VBP);
             }
 
             var BitStampResult = BitStampService.Get("x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "neyy1424");

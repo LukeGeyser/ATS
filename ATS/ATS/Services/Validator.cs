@@ -17,7 +17,6 @@ namespace ATS.Services
 
             List<AskBid> _checkedBids = new List<AskBid>();
 
-            double totalVal = 0.0;
             double quantities = 0.0D;
             double VBP = 0.0;
             bool inital = false;
@@ -27,9 +26,9 @@ namespace ATS.Services
                 quantities += Convert.ToDouble(bid.Quantity);
                 _checkedBids.Add(bid);
 
-                if ((totalVal + Convert.ToDouble(bid.Quantity)) >= BTI && !inital)
+                if (quantities >= BTI && !inital)
                 {
-                    VBP = Convert.ToDouble(bid.Quantity);
+                    VBP = Convert.ToDouble(bid.Price);
                     inital = true;
                     return VBP;
                 } 
