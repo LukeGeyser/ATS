@@ -163,9 +163,9 @@
             this.lbl_bitmapauth.AutoSize = true;
             this.lbl_bitmapauth.Location = new System.Drawing.Point(510, 117);
             this.lbl_bitmapauth.Name = "lbl_bitmapauth";
-            this.lbl_bitmapauth.Size = new System.Drawing.Size(110, 13);
+            this.lbl_bitmapauth.Size = new System.Drawing.Size(118, 13);
             this.lbl_bitmapauth.TabIndex = 11;
-            this.lbl_bitmapauth.Text = "Bitmap Authentication";
+            this.lbl_bitmapauth.Text = "Bitstamp Authentication";
             // 
             // lblSecret
             // 

@@ -64,6 +64,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ValrValidator.cs" />
+    <Compile Include="Services\BitStampService.cs" />
+    <Compile Include="Helpers\BitStampValidator.cs" />
     <Compile Include="Services\Validator.cs" />
     <Compile Include="Services\ValrService.cs" />
     <EmbeddedResource Include="Forms\MainWindow.resx">

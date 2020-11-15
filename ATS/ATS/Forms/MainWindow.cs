@@ -46,6 +46,7 @@ namespace ATS
                 int d = 3;
             }
 
+            BitStampService.Get("x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "neyy1424");
         }
 
         private void lbl_Lunoheader_Click(object sender, EventArgs e)
