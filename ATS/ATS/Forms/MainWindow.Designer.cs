@@ -40,23 +40,18 @@
             this.lblSecret = new System.Windows.Forms.Label();
             this.lbl_keyID = new System.Windows.Forms.Label();
             this.lbl_Lunoheader = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRM = new System.Windows.Forms.TextBox();
             this.lbl_requiredmargin = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbl_tradeIncre = new System.Windows.Forms.Label();
-            this.cmb_exchangerate = new System.Windows.Forms.ComboBox();
             this.lbl_ExhcangeRate = new System.Windows.Forms.Label();
             this.pnl_monitor = new System.Windows.Forms.Panel();
             this.btn_ResetHighestMargin = new System.Windows.Forms.Button();
             this.txtHighestMargin = new System.Windows.Forms.TextBox();
             this.lbl_highestmargin = new System.Windows.Forms.Label();
-            this.cmb_bitmapConverted = new System.Windows.Forms.ComboBox();
             this.lbl_bitmapconverted = new System.Windows.Forms.Label();
-            this.txt_currentmargin = new System.Windows.Forms.TextBox();
+            this.txtCurrentMargin = new System.Windows.Forms.TextBox();
             this.lbl_currentmargin = new System.Windows.Forms.Label();
-            this.cmb_BitmapAskPrice = new System.Windows.Forms.ComboBox();
             this.lbl_bitmapask = new System.Windows.Forms.Label();
-            this.cmb_VALRBidPrice = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lbl_valrbidprice = new System.Windows.Forms.Label();
             this.pnl_activations = new System.Windows.Forms.Panel();
@@ -71,6 +66,12 @@
             this.Other_Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Exchange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_errorLog = new System.Windows.Forms.Label();
+            this.txtBTI = new System.Windows.Forms.TextBox();
+            this.txtER = new System.Windows.Forms.TextBox();
+            this.lblBTIError = new System.Windows.Forms.Label();
+            this.txtVALRBidPrice = new System.Windows.Forms.TextBox();
+            this.txtBitstampAskPrice = new System.Windows.Forms.TextBox();
+            this.txtBitstampConvertedPrice = new System.Windows.Forms.TextBox();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -90,6 +91,9 @@
             // 
             // pnl_Inputs
             // 
+            this.pnl_Inputs.Controls.Add(this.lblBTIError);
+            this.pnl_Inputs.Controls.Add(this.txtER);
+            this.pnl_Inputs.Controls.Add(this.txtBTI);
             this.pnl_Inputs.Controls.Add(this.txtBitmapKey);
             this.pnl_Inputs.Controls.Add(this.txtBitmapCustID);
             this.pnl_Inputs.Controls.Add(this.txtVALRSecret);
@@ -100,11 +104,9 @@
             this.pnl_Inputs.Controls.Add(this.lblSecret);
             this.pnl_Inputs.Controls.Add(this.lbl_keyID);
             this.pnl_Inputs.Controls.Add(this.lbl_Lunoheader);
-            this.pnl_Inputs.Controls.Add(this.textBox1);
+            this.pnl_Inputs.Controls.Add(this.txtRM);
             this.pnl_Inputs.Controls.Add(this.lbl_requiredmargin);
-            this.pnl_Inputs.Controls.Add(this.comboBox1);
             this.pnl_Inputs.Controls.Add(this.lbl_tradeIncre);
-            this.pnl_Inputs.Controls.Add(this.cmb_exchangerate);
             this.pnl_Inputs.Controls.Add(this.lbl_Inputs);
             this.pnl_Inputs.Controls.Add(this.lbl_ExhcangeRate);
             this.pnl_Inputs.Location = new System.Drawing.Point(12, 3);
@@ -196,12 +198,12 @@
             this.lbl_Lunoheader.Text = "VALR Authentication";
             this.lbl_Lunoheader.Click += new System.EventHandler(this.lbl_Lunoheader_Click);
             // 
-            // textBox1
+            // txtRM
             // 
-            this.textBox1.Location = new System.Drawing.Point(141, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.txtRM.Location = new System.Drawing.Point(141, 158);
+            this.txtRM.Name = "txtRM";
+            this.txtRM.Size = new System.Drawing.Size(121, 20);
+            this.txtRM.TabIndex = 7;
             // 
             // lbl_requiredmargin
             // 
@@ -212,14 +214,6 @@
             this.lbl_requiredmargin.TabIndex = 6;
             this.lbl_requiredmargin.Text = "Required Margin";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 109);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
             // lbl_tradeIncre
             // 
             this.lbl_tradeIncre.AutoSize = true;
@@ -228,14 +222,6 @@
             this.lbl_tradeIncre.Size = new System.Drawing.Size(120, 13);
             this.lbl_tradeIncre.TabIndex = 4;
             this.lbl_tradeIncre.Text = "Bitcoin Trade Increment";
-            // 
-            // cmb_exchangerate
-            // 
-            this.cmb_exchangerate.FormattingEnabled = true;
-            this.cmb_exchangerate.Location = new System.Drawing.Point(141, 58);
-            this.cmb_exchangerate.Name = "cmb_exchangerate";
-            this.cmb_exchangerate.Size = new System.Drawing.Size(121, 21);
-            this.cmb_exchangerate.TabIndex = 3;
             // 
             // lbl_ExhcangeRate
             // 
@@ -248,16 +234,16 @@
             // 
             // pnl_monitor
             // 
+            this.pnl_monitor.Controls.Add(this.txtBitstampConvertedPrice);
+            this.pnl_monitor.Controls.Add(this.txtBitstampAskPrice);
+            this.pnl_monitor.Controls.Add(this.txtVALRBidPrice);
             this.pnl_monitor.Controls.Add(this.btn_ResetHighestMargin);
             this.pnl_monitor.Controls.Add(this.txtHighestMargin);
             this.pnl_monitor.Controls.Add(this.lbl_highestmargin);
-            this.pnl_monitor.Controls.Add(this.cmb_bitmapConverted);
             this.pnl_monitor.Controls.Add(this.lbl_bitmapconverted);
-            this.pnl_monitor.Controls.Add(this.txt_currentmargin);
+            this.pnl_monitor.Controls.Add(this.txtCurrentMargin);
             this.pnl_monitor.Controls.Add(this.lbl_currentmargin);
-            this.pnl_monitor.Controls.Add(this.cmb_BitmapAskPrice);
             this.pnl_monitor.Controls.Add(this.lbl_bitmapask);
-            this.pnl_monitor.Controls.Add(this.cmb_VALRBidPrice);
             this.pnl_monitor.Controls.Add(this.label9);
             this.pnl_monitor.Controls.Add(this.lbl_valrbidprice);
             this.pnl_monitor.Location = new System.Drawing.Point(12, 194);
@@ -290,14 +276,6 @@
             this.lbl_highestmargin.TabIndex = 10;
             this.lbl_highestmargin.Text = "Highest Margin";
             // 
-            // cmb_bitmapConverted
-            // 
-            this.cmb_bitmapConverted.FormattingEnabled = true;
-            this.cmb_bitmapConverted.Location = new System.Drawing.Point(141, 110);
-            this.cmb_bitmapConverted.Name = "cmb_bitmapConverted";
-            this.cmb_bitmapConverted.Size = new System.Drawing.Size(74, 21);
-            this.cmb_bitmapConverted.TabIndex = 9;
-            // 
             // lbl_bitmapconverted
             // 
             this.lbl_bitmapconverted.AutoSize = true;
@@ -307,12 +285,12 @@
             this.lbl_bitmapconverted.TabIndex = 8;
             this.lbl_bitmapconverted.Text = "Bitmap Converted Price";
             // 
-            // txt_currentmargin
+            // txtCurrentMargin
             // 
-            this.txt_currentmargin.Location = new System.Drawing.Point(141, 140);
-            this.txt_currentmargin.Name = "txt_currentmargin";
-            this.txt_currentmargin.Size = new System.Drawing.Size(74, 20);
-            this.txt_currentmargin.TabIndex = 7;
+            this.txtCurrentMargin.Location = new System.Drawing.Point(141, 140);
+            this.txtCurrentMargin.Name = "txtCurrentMargin";
+            this.txtCurrentMargin.Size = new System.Drawing.Size(121, 20);
+            this.txtCurrentMargin.TabIndex = 7;
             // 
             // lbl_currentmargin
             // 
@@ -323,14 +301,6 @@
             this.lbl_currentmargin.TabIndex = 6;
             this.lbl_currentmargin.Text = "Current Margin";
             // 
-            // cmb_BitmapAskPrice
-            // 
-            this.cmb_BitmapAskPrice.FormattingEnabled = true;
-            this.cmb_BitmapAskPrice.Location = new System.Drawing.Point(141, 76);
-            this.cmb_BitmapAskPrice.Name = "cmb_BitmapAskPrice";
-            this.cmb_BitmapAskPrice.Size = new System.Drawing.Size(74, 21);
-            this.cmb_BitmapAskPrice.TabIndex = 5;
-            // 
             // lbl_bitmapask
             // 
             this.lbl_bitmapask.AutoSize = true;
@@ -339,14 +309,6 @@
             this.lbl_bitmapask.Size = new System.Drawing.Size(87, 13);
             this.lbl_bitmapask.TabIndex = 4;
             this.lbl_bitmapask.Text = "Bitmap Ask Price";
-            // 
-            // cmb_VALRBidPrice
-            // 
-            this.cmb_VALRBidPrice.FormattingEnabled = true;
-            this.cmb_VALRBidPrice.Location = new System.Drawing.Point(141, 40);
-            this.cmb_VALRBidPrice.Name = "cmb_VALRBidPrice";
-            this.cmb_VALRBidPrice.Size = new System.Drawing.Size(74, 21);
-            this.cmb_VALRBidPrice.TabIndex = 3;
             // 
             // label9
             // 
@@ -468,6 +430,52 @@
             this.lbl_errorLog.TabIndex = 0;
             this.lbl_errorLog.Text = "Error Log";
             // 
+            // txtBTI
+            // 
+            this.txtBTI.Location = new System.Drawing.Point(141, 109);
+            this.txtBTI.Name = "txtBTI";
+            this.txtBTI.Size = new System.Drawing.Size(121, 20);
+            this.txtBTI.TabIndex = 18;
+            this.txtBTI.TextChanged += new System.EventHandler(this.txtBTI_TextChanged);
+            // 
+            // txtER
+            // 
+            this.txtER.Location = new System.Drawing.Point(141, 58);
+            this.txtER.Name = "txtER";
+            this.txtER.Size = new System.Drawing.Size(121, 20);
+            this.txtER.TabIndex = 19;
+            // 
+            // lblBTIError
+            // 
+            this.lblBTIError.AutoSize = true;
+            this.lblBTIError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblBTIError.Location = new System.Drawing.Point(268, 112);
+            this.lblBTIError.Name = "lblBTIError";
+            this.lblBTIError.Size = new System.Drawing.Size(120, 13);
+            this.lblBTIError.TabIndex = 20;
+            this.lblBTIError.Text = "Bitcoin Trade Increment";
+            // 
+            // txtVALRBidPrice
+            // 
+            this.txtVALRBidPrice.Location = new System.Drawing.Point(141, 40);
+            this.txtVALRBidPrice.Name = "txtVALRBidPrice";
+            this.txtVALRBidPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtVALRBidPrice.TabIndex = 21;
+            // 
+            // txtBitstampAskPrice
+            // 
+            this.txtBitstampAskPrice.Location = new System.Drawing.Point(141, 76);
+            this.txtBitstampAskPrice.Name = "txtBitstampAskPrice";
+            this.txtBitstampAskPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtBitstampAskPrice.TabIndex = 22;
+            // 
+            // txtBitstampConvertedPrice
+            // 
+            this.txtBitstampConvertedPrice.Location = new System.Drawing.Point(141, 110);
+            this.txtBitstampConvertedPrice.Name = "txtBitstampConvertedPrice";
+            this.txtBitstampConvertedPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtBitstampConvertedPrice.TabIndex = 23;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,11 +504,9 @@
 
         private System.Windows.Forms.Label lbl_Inputs;
         private System.Windows.Forms.Panel pnl_Inputs;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRM;
         private System.Windows.Forms.Label lbl_requiredmargin;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lbl_tradeIncre;
-        private System.Windows.Forms.ComboBox cmb_exchangerate;
         private System.Windows.Forms.Label lbl_ExhcangeRate;
         private System.Windows.Forms.TextBox txtVALRKeyId;
         private System.Windows.Forms.Label lbl_APIKey;
@@ -516,13 +522,10 @@
         private System.Windows.Forms.Button btn_ResetHighestMargin;
         private System.Windows.Forms.TextBox txtHighestMargin;
         private System.Windows.Forms.Label lbl_highestmargin;
-        private System.Windows.Forms.ComboBox cmb_bitmapConverted;
         private System.Windows.Forms.Label lbl_bitmapconverted;
-        private System.Windows.Forms.TextBox txt_currentmargin;
+        private System.Windows.Forms.TextBox txtCurrentMargin;
         private System.Windows.Forms.Label lbl_currentmargin;
-        private System.Windows.Forms.ComboBox cmb_BitmapAskPrice;
         private System.Windows.Forms.Label lbl_bitmapask;
-        private System.Windows.Forms.ComboBox cmb_VALRBidPrice;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbl_valrbidprice;
         private System.Windows.Forms.Panel pnl_activations;
@@ -537,6 +540,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Other_Parameter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Exchange;
         private System.Windows.Forms.Label lbl_errorLog;
+        private System.Windows.Forms.TextBox txtER;
+        private System.Windows.Forms.TextBox txtBTI;
+        private System.Windows.Forms.Label lblBTIError;
+        private System.Windows.Forms.TextBox txtBitstampConvertedPrice;
+        private System.Windows.Forms.TextBox txtBitstampAskPrice;
+        private System.Windows.Forms.TextBox txtVALRBidPrice;
     }
 }
 

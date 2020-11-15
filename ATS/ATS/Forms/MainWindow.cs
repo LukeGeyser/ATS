@@ -19,9 +19,12 @@ namespace ATS
 
         public double VBP = 0.0;
 
+        bool canMonitor = false;
+
         public MainWindow()
         {
             InitializeComponent();
+            lblBTIError.Visible = false;
         }
 
         private void lblSecret_Click(object sender, EventArgs e)
@@ -52,6 +55,39 @@ namespace ATS
         private void lbl_Lunoheader_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtBTI_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var BTI = Convert.ToDouble(txtBTI.Text);
+                if (!string.IsNullOrEmpty(txtBitstampAskPrice.Text))
+                {
+                    
+                    var BAP = Convert.ToDouble(txtBitstampAskPrice.Text);
+                    if (BTI > 0.0001 && BTI > (25 / BAP))
+                    {
+                        canMonitor = true;
+                    }
+                    else
+                        canMonitor = false;
+                }
+                else
+                {
+                    if (BTI > 0.0001)
+                    {
+                        canMonitor = true;
+                    }
+                    else
+                        canMonitor = false;
+                }
+            }
+            catch (Exception)
+            {
+                lblBTIError.Text = "Please check your BTI value";
+            }
+            
         }
     }
 }
