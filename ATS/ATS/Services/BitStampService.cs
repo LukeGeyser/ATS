@@ -14,15 +14,15 @@ namespace ATS.Services
 {
    public static class BitStampService
     {
-        public static void Get(string ApiKey, string ApiKeySecret, string clientID)
+        public static string Get(string ApiKey, string ApiKeySecret, string clientID)
         {
             var _timestamp = BitStampValidator.GetTimeStamp();
            
             IRestResponse response;
-
+            string currency_pair = "btceur";
             try
             {
-                HttpWebRequest getApiRequest = (HttpWebRequest)HttpWebRequest.Create("https://www.bitstamp.net/api/ticker/");
+                HttpWebRequest getApiRequest = (HttpWebRequest)HttpWebRequest.Create("https://www.bitstamp.net/api/v2/order_book/" + currency_pair + "/");
                 getApiRequest.Method = "POST";
                 
 
@@ -43,6 +43,8 @@ namespace ATS.Services
 
                 Debug.WriteLine(result);
 
+
+                return result;
             }
 
             catch (Exception e)

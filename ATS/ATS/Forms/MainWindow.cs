@@ -1,4 +1,5 @@
-﻿using ATS.Models.VALR;
+﻿using ATS.Models.Bitstamp;
+using ATS.Models.VALR;
 using ATS.Services;
 using RestSharp;
 using System;
@@ -49,7 +50,10 @@ namespace ATS
                 int d = 3;
             }
 
-            BitStampService.Get("x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "neyy1424");
+            var BitStampResult = BitStampService.Get("x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "x4nzTgSdkuGgPzwSa5kBrKHmyyDOURdI", "neyy1424");
+
+            var orderbook = Newtonsoft.Json.JsonConvert.DeserializeObject<BitstampOrderBook>(BitStampResult);
+            int a = 2; 
         }
 
         private void lbl_Lunoheader_Click(object sender, EventArgs e)
