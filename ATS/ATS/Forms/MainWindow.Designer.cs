@@ -308,6 +308,7 @@
             this.btn_ResetHighestMargin.TabIndex = 12;
             this.btn_ResetHighestMargin.Text = "Reset Highest Margin";
             this.btn_ResetHighestMargin.UseVisualStyleBackColor = true;
+            this.btn_ResetHighestMargin.Click += new System.EventHandler(this.btn_ResetHighestMargin_Click);
             // 
             // txtHighestMargin
             // 
@@ -397,6 +398,7 @@
             this.btn_StopAll.TabIndex = 14;
             this.btn_StopAll.Text = "Stop All";
             this.btn_StopAll.UseVisualStyleBackColor = true;
+            this.btn_StopAll.Click += new System.EventHandler(this.btn_StopAll_Click);
             // 
             // btn_ActivateTrading
             // 
@@ -406,6 +408,7 @@
             this.btn_ActivateTrading.TabIndex = 13;
             this.btn_ActivateTrading.Text = "Activate Trading";
             this.btn_ActivateTrading.UseVisualStyleBackColor = true;
+            this.btn_ActivateTrading.Click += new System.EventHandler(this.btn_ActivateTrading_Click);
             // 
             // btn_ActivateMonitoring
             // 

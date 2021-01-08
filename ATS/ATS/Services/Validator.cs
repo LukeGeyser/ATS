@@ -25,7 +25,7 @@ namespace ATS.Services
 
             double quantities = 0.0D;
             double VBP = 0.0;
-            bool inital = false;
+            bool inital = true;
 
             foreach (var bid in bids)
             {
@@ -36,16 +36,17 @@ namespace ATS.Services
                 quantities += Convert.ToDouble(bid.Quantity);
                 _checkedBids.Add(bid);
 
-                if (quantities >= BTI && !inital)
+                if (quantities >= BTI && inital)
                 {
                     VBP = Convert.ToDouble(bid.Price);
-                    inital = true;
                     return VBP;
                 }
                 else if (quantities >= BTI)
                 {
                     VBP = ReturnVBPFromBids(_checkedBids, quantities);
+                    return VBP;
                 }
+                inital = false;
                 counter++;
             }
 
@@ -69,7 +70,7 @@ namespace ATS.Services
         public static double CalcBAP(List<List<string>> asks, double BTI)
         {
 
-            var Asks = asks.GetRange(0, 9);
+            var Asks = asks.GetRange(0, 20);
 
             List<BitstampAsk> convertedAsks = new List<BitstampAsk>();
 
@@ -86,7 +87,7 @@ namespace ATS.Services
 
             double quantities = 0.0D;
             double VBP = 0.0;
-            bool inital = false;
+            bool inital = true;
 
             foreach (var ask in orderedAsks)
             {
@@ -97,16 +98,17 @@ namespace ATS.Services
                 quantities += Convert.ToDouble(ask.Quantity);
                 _checkedBids.Add(ask);
 
-                if (quantities >= BTI && !inital)
+                if (quantities >= BTI && inital)
                 {
                     VBP = Convert.ToDouble(ask.Price);
-                    inital = true;
                     return VBP;
                 }
                 else if (quantities >= BTI)
                 {
                     VBP = ReturnBAPFromAsks(_checkedBids, quantities);
+                    return VBP;
                 }
+                inital = false;
                 counter++;
             }
 
