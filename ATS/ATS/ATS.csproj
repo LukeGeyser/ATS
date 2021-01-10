@@ -60,8 +60,15 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Bitstamp\BitstampAsk.cs" />
+    <Compile Include="Models\Bitstamp\BitstampMarketOrderResponse.cs" />
+    <Compile Include="Models\Bitstamp\BitstampMarketOrderStatus.cs" />
     <Compile Include="Models\Bitstamp\BitstampOrderBook.cs" />
+    <Compile Include="Models\Bitstamp\BitstampOrderError.cs" />
+    <Compile Include="Models\Bitstamp\Transaction.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\VALR\AskBid.cs" />
+    <Compile Include="Models\VALR\MarketOrderResponseVALR.cs" />
+    <Compile Include="Models\VALR\MarketOrderStatusVALR.cs" />
     <Compile Include="Models\VALR\MarketOrderVALR.cs" />
     <Compile Include="Models\VALR\OrderBookVALR.cs" />
     <Compile Include="Program.cs" />

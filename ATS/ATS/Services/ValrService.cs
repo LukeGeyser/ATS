@@ -12,7 +12,6 @@ namespace ATS.Services
 {
     public static class ValrService
     {
-
         public async static Task<IRestResponse> Get(string ApiKey, string ApiKeySecret, string Verb, string Path, string Body = "")
         {
             var _timeStamp = ValrValidator.GetTimeStamp();
@@ -63,7 +62,7 @@ namespace ATS.Services
                 request.AddHeader("X-VALR-TIMESTAMP", _timeStamp);
                 request.AddParameter("application/json", Body, ParameterType.RequestBody);
 
-                //response = await client.ExecuteAsync(request);
+                response = await client.ExecuteAsync(request);
             }
             catch (Exception)
             {
@@ -93,7 +92,7 @@ namespace ATS.Services
                 request.AddHeader("X-VALR-SIGNATURE", rqstSig);
                 request.AddHeader("X-VALR-TIMESTAMP", _timeStamp);
 
-                //response = await client.ExecuteAsync(request);
+                response = await client.ExecuteAsync(request);
             }
             catch (Exception)
             {
@@ -103,6 +102,5 @@ namespace ATS.Services
 
             return response;
         }
-
     }
 }

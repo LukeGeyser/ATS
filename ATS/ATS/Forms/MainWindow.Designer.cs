@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
             this.lblBTIError = new System.Windows.Forms.Label();
@@ -68,10 +69,6 @@
             this.lbl_Activations = new System.Windows.Forms.Label();
             this.pnl_ErrorLog = new System.Windows.Forms.Panel();
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
-            this.timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.error = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Other_Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Exchange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_errorLog = new System.Windows.Forms.Label();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnl_Inputs.SuspendLayout();
@@ -331,9 +328,9 @@
             this.lbl_bitmapconverted.AutoSize = true;
             this.lbl_bitmapconverted.Location = new System.Drawing.Point(15, 113);
             this.lbl_bitmapconverted.Name = "lbl_bitmapconverted";
-            this.lbl_bitmapconverted.Size = new System.Drawing.Size(118, 13);
+            this.lbl_bitmapconverted.Size = new System.Drawing.Size(126, 13);
             this.lbl_bitmapconverted.TabIndex = 8;
-            this.lbl_bitmapconverted.Text = "Bitmap Converted Price";
+            this.lbl_bitmapconverted.Text = "Bitstamp Converted Price";
             // 
             // txtCurrentMargin
             // 
@@ -356,9 +353,9 @@
             this.lbl_bitmapask.AutoSize = true;
             this.lbl_bitmapask.Location = new System.Drawing.Point(15, 79);
             this.lbl_bitmapask.Name = "lbl_bitmapask";
-            this.lbl_bitmapask.Size = new System.Drawing.Size(87, 13);
+            this.lbl_bitmapask.Size = new System.Drawing.Size(95, 13);
             this.lbl_bitmapask.TabIndex = 4;
-            this.lbl_bitmapask.Text = "Bitmap Ask Price";
+            this.lbl_bitmapask.Text = "Bitstamp Ask Price";
             // 
             // label9
             // 
@@ -441,36 +438,28 @@
             // 
             // dgv_errorLog
             // 
+            this.dgv_errorLog.AllowUserToDeleteRows = false;
+            this.dgv_errorLog.AllowUserToResizeColumns = false;
+            this.dgv_errorLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_errorLog.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgv_errorLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_errorLog.CausesValidation = false;
+            this.dgv_errorLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_errorLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_errorLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_errorLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.timestamp,
-            this.error,
-            this.Other_Parameter,
-            this.Exchange});
             this.dgv_errorLog.Location = new System.Drawing.Point(3, 36);
             this.dgv_errorLog.Name = "dgv_errorLog";
+            this.dgv_errorLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_errorLog.Size = new System.Drawing.Size(983, 150);
             this.dgv_errorLog.TabIndex = 1;
-            // 
-            // timestamp
-            // 
-            this.timestamp.HeaderText = "Time & Date";
-            this.timestamp.Name = "timestamp";
-            // 
-            // error
-            // 
-            this.error.HeaderText = "Error";
-            this.error.Name = "error";
-            // 
-            // Other_Parameter
-            // 
-            this.Other_Parameter.HeaderText = "Other Parameter";
-            this.Other_Parameter.Name = "Other_Parameter";
-            // 
-            // Exchange
-            // 
-            this.Exchange.HeaderText = "Exchange";
-            this.Exchange.Name = "Exchange";
+            this.dgv_errorLog.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_errorLog_CellFormatting);
             // 
             // lbl_errorLog
             // 
@@ -495,6 +484,7 @@
             this.Controls.Add(this.pnl_activations);
             this.Controls.Add(this.pnl_monitor);
             this.Controls.Add(this.pnl_Inputs);
+            this.MinimumSize = new System.Drawing.Size(1029, 688);
             this.Name = "MainWindow";
             this.Text = "Arbitrade Trading Software";
             this.pnl_Inputs.ResumeLayout(false);
@@ -546,10 +536,6 @@
         private System.Windows.Forms.Label lbl_Activations;
         private System.Windows.Forms.Panel pnl_ErrorLog;
         private System.Windows.Forms.DataGridView dgv_errorLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timestamp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn error;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Other_Parameter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Exchange;
         private System.Windows.Forms.Label lbl_errorLog;
         private System.Windows.Forms.TextBox txtER;
         private System.Windows.Forms.TextBox txtBTI;

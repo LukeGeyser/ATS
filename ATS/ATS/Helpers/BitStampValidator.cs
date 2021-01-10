@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -22,6 +23,20 @@ namespace ATS.Helpers
             }
         }
 
+        public static string CreateSignatureV2(string apiKeySecret, string apiKey, string httpVerb, string urlHost, string urlPath, string urlQuery, string urlContentType, string nonce, string timeStamp, string authVersion, string reqBody)
+        {
+            var TempPayload = string.Format($"BITSTAMP {apiKey}{httpVerb}{urlHost}{urlPath}{urlQuery}{urlContentType}{nonce}{timeStamp}{authVersion}{(string.IsNullOrEmpty(reqBody) == true ? null : reqBody)}");
+            byte[] payload = Encoding.UTF8.GetBytes(TempPayload);
+            
+
+            using (HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(apiKeySecret)))
+            {
+                byte[] hash = hmac.ComputeHash(payload);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
+
+        }
+
         private static string ConvertToHexString(byte[] hash)
         {
             StringBuilder result = new StringBuilder(hash.Length * 2);
@@ -32,6 +47,19 @@ namespace ATS.Helpers
             }
 
             return result.ToString();
+        }
+
+        public static string GenerateNonce()
+        {
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                var bit_count = (32 * 6);
+                var byte_count = ((bit_count + 7) / 8); // rounded up
+                var bytes = new byte[byte_count];
+                rng.GetBytes(bytes);
+                return Convert.ToBase64String(bytes);
+            }
+            
         }
 
         public static string GetTimeStamp()
