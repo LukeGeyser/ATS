@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using ATS.Models;
+using System.Diagnostics;
 
 namespace ATS.Helpers
 {
@@ -23,25 +24,36 @@ namespace ATS.Helpers
         public static List<ErrorModel> GetErrors()
         {
             List<ErrorModel> errors = new List<ErrorModel>();
-
-            using (StreamReader reader = new StreamReader(_FILENAME))
+            try
             {
-                string[] _arrayData = new string[4];
-                string _tempData;
-                _tempData = reader.ReadLine();
+                FileStream fs = new FileStream(_FILENAME, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                fs.Close();
 
-                while (_tempData != null)
+                using (StreamReader reader = new StreamReader(_FILENAME))
                 {
-                    _arrayData = _tempData.Split('|');
-
-                    errors.Add(new ErrorModel(_arrayData[0], _arrayData[1], _arrayData[2], _arrayData[3]));
-
-                    _arrayData = null;
+                    string[] _arrayData = new string[4];
+                    string _tempData;
                     _tempData = reader.ReadLine();
+                    Debug.WriteLine(_tempData);
+
+                    while (_tempData != null)
+                    {
+                        _arrayData = _tempData.Split('|');
+
+                        errors.Add(new ErrorModel(_arrayData[0], _arrayData[1], _arrayData[2], _arrayData[3]));
+
+                        _arrayData = null;
+                        _tempData = reader.ReadLine();
+                    }
+
+                    return errors.GetRange(errors.Count - 5, 5);
                 }
             }
-            
-            return errors.GetRange(errors.Count - 5, 5);
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return errors;
+            }
         }
     }
 }
