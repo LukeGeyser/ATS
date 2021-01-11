@@ -397,10 +397,6 @@ namespace ATS
             btn_ActivateMonitoring.Enabled = canMonitor;
             btn_ActivateTrading.Enabled = canMonitor;
 
-            txtER.Text = "18.7";
-            txtBTI.Text = "0.0001";
-            txtRM.Text = "3.2";
-
             errors = new BindingList<ErrorModel>(FileHandler.GetErrors());
 
             errorBindingSource = new BindingSource(errors, null);
@@ -481,7 +477,7 @@ namespace ATS
                 {
 
                     var BAP = Convert.ToDouble(txtBitstampAskPrice.Text);
-                    if (BTI > 0.0001 && BTI > (25 / BAP))
+                    if (BTI > 0.001 && BTI > (25 / BAP))
                     {
                         canMonitor = true;
                         lblBTIError.Visible = false;
@@ -495,7 +491,7 @@ namespace ATS
                 }
                 else
                 {
-                    if (BTI >= 0.0001)
+                    if (BTI >= 0.001)
                     {
                         canMonitor = true;
                         lblBTIError.Visible = false;
