@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
             this.lblBTIError = new System.Windows.Forms.Label();
             this.txtER = new System.Windows.Forms.TextBox();
             this.txtBTI = new System.Windows.Forms.TextBox();
-            this.txtBitmapKey = new System.Windows.Forms.TextBox();
-            this.txtBitmapCustID = new System.Windows.Forms.TextBox();
-            this.txtVALRSecret = new System.Windows.Forms.TextBox();
-            this.txtVALRKeyId = new System.Windows.Forms.TextBox();
+            this.txtBitstampApiKey = new System.Windows.Forms.TextBox();
+            this.txtBitstampClientID = new System.Windows.Forms.TextBox();
+            this.txtVALRApiKeySecret = new System.Windows.Forms.TextBox();
+            this.txtVALRApiKey = new System.Windows.Forms.TextBox();
             this.lbl_APIKey = new System.Windows.Forms.Label();
             this.lbl_cust_id = new System.Windows.Forms.Label();
             this.lbl_bitmapauth = new System.Windows.Forms.Label();
@@ -70,7 +70,10 @@
             this.pnl_ErrorLog = new System.Windows.Forms.Panel();
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.lbl_errorLog = new System.Windows.Forms.Label();
+            this.btnClearErrors = new System.Windows.Forms.Button();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtBitstampApiKeySecret = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -91,13 +94,15 @@
             // 
             // pnl_Inputs
             // 
+            this.pnl_Inputs.Controls.Add(this.txtBitstampApiKeySecret);
+            this.pnl_Inputs.Controls.Add(this.label1);
             this.pnl_Inputs.Controls.Add(this.lblBTIError);
             this.pnl_Inputs.Controls.Add(this.txtER);
             this.pnl_Inputs.Controls.Add(this.txtBTI);
-            this.pnl_Inputs.Controls.Add(this.txtBitmapKey);
-            this.pnl_Inputs.Controls.Add(this.txtBitmapCustID);
-            this.pnl_Inputs.Controls.Add(this.txtVALRSecret);
-            this.pnl_Inputs.Controls.Add(this.txtVALRKeyId);
+            this.pnl_Inputs.Controls.Add(this.txtBitstampApiKey);
+            this.pnl_Inputs.Controls.Add(this.txtBitstampClientID);
+            this.pnl_Inputs.Controls.Add(this.txtVALRApiKeySecret);
+            this.pnl_Inputs.Controls.Add(this.txtVALRApiKey);
             this.pnl_Inputs.Controls.Add(this.lbl_APIKey);
             this.pnl_Inputs.Controls.Add(this.lbl_cust_id);
             this.pnl_Inputs.Controls.Add(this.lbl_bitmapauth);
@@ -139,38 +144,38 @@
             this.txtBTI.TabIndex = 18;
             this.txtBTI.TextChanged += new System.EventHandler(this.txtBTI_TextChanged);
             // 
-            // txtBitmapKey
+            // txtBitstampApiKey
             // 
-            this.txtBitmapKey.Location = new System.Drawing.Point(623, 162);
-            this.txtBitmapKey.Name = "txtBitmapKey";
-            this.txtBitmapKey.Size = new System.Drawing.Size(254, 20);
-            this.txtBitmapKey.TabIndex = 17;
+            this.txtBitstampApiKey.Location = new System.Drawing.Point(623, 136);
+            this.txtBitstampApiKey.Name = "txtBitstampApiKey";
+            this.txtBitstampApiKey.Size = new System.Drawing.Size(254, 20);
+            this.txtBitstampApiKey.TabIndex = 17;
             // 
-            // txtBitmapCustID
+            // txtBitstampClientID
             // 
-            this.txtBitmapCustID.Location = new System.Drawing.Point(623, 133);
-            this.txtBitmapCustID.Name = "txtBitmapCustID";
-            this.txtBitmapCustID.Size = new System.Drawing.Size(254, 20);
-            this.txtBitmapCustID.TabIndex = 16;
+            this.txtBitstampClientID.Location = new System.Drawing.Point(623, 107);
+            this.txtBitstampClientID.Name = "txtBitstampClientID";
+            this.txtBitstampClientID.Size = new System.Drawing.Size(254, 20);
+            this.txtBitstampClientID.TabIndex = 16;
             // 
-            // txtVALRSecret
+            // txtVALRApiKeySecret
             // 
-            this.txtVALRSecret.Location = new System.Drawing.Point(623, 85);
-            this.txtVALRSecret.Name = "txtVALRSecret";
-            this.txtVALRSecret.Size = new System.Drawing.Size(254, 20);
-            this.txtVALRSecret.TabIndex = 15;
+            this.txtVALRApiKeySecret.Location = new System.Drawing.Point(623, 59);
+            this.txtVALRApiKeySecret.Name = "txtVALRApiKeySecret";
+            this.txtVALRApiKeySecret.Size = new System.Drawing.Size(254, 20);
+            this.txtVALRApiKeySecret.TabIndex = 15;
             // 
-            // txtVALRKeyId
+            // txtVALRApiKey
             // 
-            this.txtVALRKeyId.Location = new System.Drawing.Point(623, 59);
-            this.txtVALRKeyId.Name = "txtVALRKeyId";
-            this.txtVALRKeyId.Size = new System.Drawing.Size(254, 20);
-            this.txtVALRKeyId.TabIndex = 14;
+            this.txtVALRApiKey.Location = new System.Drawing.Point(623, 33);
+            this.txtVALRApiKey.Name = "txtVALRApiKey";
+            this.txtVALRApiKey.Size = new System.Drawing.Size(254, 20);
+            this.txtVALRApiKey.TabIndex = 14;
             // 
             // lbl_APIKey
             // 
             this.lbl_APIKey.AutoSize = true;
-            this.lbl_APIKey.Location = new System.Drawing.Point(510, 165);
+            this.lbl_APIKey.Location = new System.Drawing.Point(510, 139);
             this.lbl_APIKey.Name = "lbl_APIKey";
             this.lbl_APIKey.Size = new System.Drawing.Size(48, 13);
             this.lbl_APIKey.TabIndex = 13;
@@ -179,44 +184,44 @@
             // lbl_cust_id
             // 
             this.lbl_cust_id.AutoSize = true;
-            this.lbl_cust_id.Location = new System.Drawing.Point(509, 140);
+            this.lbl_cust_id.Location = new System.Drawing.Point(510, 110);
             this.lbl_cust_id.Name = "lbl_cust_id";
-            this.lbl_cust_id.Size = new System.Drawing.Size(68, 13);
+            this.lbl_cust_id.Size = new System.Drawing.Size(50, 13);
             this.lbl_cust_id.TabIndex = 12;
-            this.lbl_cust_id.Text = "Customer ID:";
+            this.lbl_cust_id.Text = "Client ID:";
             // 
             // lbl_bitmapauth
             // 
             this.lbl_bitmapauth.AutoSize = true;
-            this.lbl_bitmapauth.Location = new System.Drawing.Point(510, 117);
+            this.lbl_bitmapauth.Location = new System.Drawing.Point(510, 88);
             this.lbl_bitmapauth.Name = "lbl_bitmapauth";
-            this.lbl_bitmapauth.Size = new System.Drawing.Size(118, 13);
+            this.lbl_bitmapauth.Size = new System.Drawing.Size(132, 13);
             this.lbl_bitmapauth.TabIndex = 11;
-            this.lbl_bitmapauth.Text = "Bitstamp Authentication";
+            this.lbl_bitmapauth.Text = "BITSTAMP Authentication";
             // 
             // lblSecret
             // 
             this.lblSecret.AutoSize = true;
-            this.lblSecret.Location = new System.Drawing.Point(510, 92);
+            this.lblSecret.Location = new System.Drawing.Point(510, 62);
             this.lblSecret.Name = "lblSecret";
-            this.lblSecret.Size = new System.Drawing.Size(41, 13);
+            this.lblSecret.Size = new System.Drawing.Size(82, 13);
             this.lblSecret.TabIndex = 10;
-            this.lblSecret.Text = "Secret:";
+            this.lblSecret.Text = "API Key Secret:";
             this.lblSecret.Click += new System.EventHandler(this.lblSecret_Click);
             // 
             // lbl_keyID
             // 
             this.lbl_keyID.AutoSize = true;
-            this.lbl_keyID.Location = new System.Drawing.Point(510, 66);
+            this.lbl_keyID.Location = new System.Drawing.Point(510, 36);
             this.lbl_keyID.Name = "lbl_keyID";
-            this.lbl_keyID.Size = new System.Drawing.Size(42, 13);
+            this.lbl_keyID.Size = new System.Drawing.Size(48, 13);
             this.lbl_keyID.TabIndex = 9;
-            this.lbl_keyID.Text = "Key ID:";
+            this.lbl_keyID.Text = "API Key:";
             // 
             // lbl_Lunoheader
             // 
             this.lbl_Lunoheader.AutoSize = true;
-            this.lbl_Lunoheader.Location = new System.Drawing.Point(510, 42);
+            this.lbl_Lunoheader.Location = new System.Drawing.Point(510, 16);
             this.lbl_Lunoheader.Name = "lbl_Lunoheader";
             this.lbl_Lunoheader.Size = new System.Drawing.Size(106, 13);
             this.lbl_Lunoheader.TabIndex = 8;
@@ -299,7 +304,7 @@
             // 
             // btn_ResetHighestMargin
             // 
-            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(496, 71);
+            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(529, 71);
             this.btn_ResetHighestMargin.Name = "btn_ResetHighestMargin";
             this.btn_ResetHighestMargin.Size = new System.Drawing.Size(99, 43);
             this.btn_ResetHighestMargin.TabIndex = 12;
@@ -378,6 +383,7 @@
             // 
             // pnl_activations
             // 
+            this.pnl_activations.Controls.Add(this.btnClearErrors);
             this.pnl_activations.Controls.Add(this.btn_StopAll);
             this.pnl_activations.Controls.Add(this.btn_ActivateTrading);
             this.pnl_activations.Controls.Add(this.btn_ActivateMonitoring);
@@ -389,7 +395,7 @@
             // 
             // btn_StopAll
             // 
-            this.btn_StopAll.Location = new System.Drawing.Point(623, 31);
+            this.btn_StopAll.Location = new System.Drawing.Point(529, 28);
             this.btn_StopAll.Name = "btn_StopAll";
             this.btn_StopAll.Size = new System.Drawing.Size(99, 43);
             this.btn_StopAll.TabIndex = 14;
@@ -399,7 +405,7 @@
             // 
             // btn_ActivateTrading
             // 
-            this.btn_ActivateTrading.Location = new System.Drawing.Point(435, 31);
+            this.btn_ActivateTrading.Location = new System.Drawing.Point(341, 28);
             this.btn_ActivateTrading.Name = "btn_ActivateTrading";
             this.btn_ActivateTrading.Size = new System.Drawing.Size(99, 43);
             this.btn_ActivateTrading.TabIndex = 13;
@@ -409,7 +415,7 @@
             // 
             // btn_ActivateMonitoring
             // 
-            this.btn_ActivateMonitoring.Location = new System.Drawing.Point(235, 31);
+            this.btn_ActivateMonitoring.Location = new System.Drawing.Point(141, 28);
             this.btn_ActivateMonitoring.Name = "btn_ActivateMonitoring";
             this.btn_ActivateMonitoring.Size = new System.Drawing.Size(99, 43);
             this.btn_ActivateMonitoring.TabIndex = 12;
@@ -445,17 +451,18 @@
             this.dgv_errorLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_errorLog.CausesValidation = false;
             this.dgv_errorLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_errorLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_errorLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_errorLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_errorLog.Location = new System.Drawing.Point(3, 36);
             this.dgv_errorLog.Name = "dgv_errorLog";
+            this.dgv_errorLog.ReadOnly = true;
             this.dgv_errorLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_errorLog.Size = new System.Drawing.Size(983, 150);
             this.dgv_errorLog.TabIndex = 1;
@@ -471,9 +478,35 @@
             this.lbl_errorLog.TabIndex = 0;
             this.lbl_errorLog.Text = "Error Log";
             // 
+            // btnClearErrors
+            // 
+            this.btnClearErrors.Location = new System.Drawing.Point(719, 28);
+            this.btnClearErrors.Name = "btnClearErrors";
+            this.btnClearErrors.Size = new System.Drawing.Size(99, 43);
+            this.btnClearErrors.TabIndex = 15;
+            this.btnClearErrors.Text = "Clear Errors";
+            this.btnClearErrors.UseVisualStyleBackColor = true;
+            this.btnClearErrors.Click += new System.EventHandler(this.btnClearErrors_Click);
+            // 
             // mainWindowBindingSource
             // 
             this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
+            // 
+            // txtBitstampApiKeySecret
+            // 
+            this.txtBitstampApiKeySecret.Location = new System.Drawing.Point(623, 165);
+            this.txtBitstampApiKeySecret.Name = "txtBitstampApiKeySecret";
+            this.txtBitstampApiKeySecret.Size = new System.Drawing.Size(254, 20);
+            this.txtBitstampApiKeySecret.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(510, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "API Key Secret:";
             // 
             // MainWindow
             // 
@@ -509,16 +542,16 @@
         private System.Windows.Forms.Label lbl_requiredmargin;
         private System.Windows.Forms.Label lbl_tradeIncre;
         private System.Windows.Forms.Label lbl_ExhcangeRate;
-        private System.Windows.Forms.TextBox txtVALRKeyId;
+        private System.Windows.Forms.TextBox txtVALRApiKey;
         private System.Windows.Forms.Label lbl_APIKey;
         private System.Windows.Forms.Label lbl_cust_id;
         private System.Windows.Forms.Label lbl_bitmapauth;
         private System.Windows.Forms.Label lblSecret;
         private System.Windows.Forms.Label lbl_keyID;
         private System.Windows.Forms.Label lbl_Lunoheader;
-        private System.Windows.Forms.TextBox txtBitmapKey;
-        private System.Windows.Forms.TextBox txtBitmapCustID;
-        private System.Windows.Forms.TextBox txtVALRSecret;
+        private System.Windows.Forms.TextBox txtBitstampApiKey;
+        private System.Windows.Forms.TextBox txtBitstampClientID;
+        private System.Windows.Forms.TextBox txtVALRApiKeySecret;
         private System.Windows.Forms.Panel pnl_monitor;
         private System.Windows.Forms.Button btn_ResetHighestMargin;
         private System.Windows.Forms.TextBox txtHighestMargin;
@@ -544,6 +577,9 @@
         private System.Windows.Forms.TextBox txtBitstampAskPrice;
         private System.Windows.Forms.TextBox txtVALRBidPrice;
         private System.Windows.Forms.BindingSource mainWindowBindingSource;
+        private System.Windows.Forms.Button btnClearErrors;
+        private System.Windows.Forms.TextBox txtBitstampApiKeySecret;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -1,4 +1,7 @@
-﻿using ATS.Models;
+﻿using ATS.Enumerators;
+using ATS.Forms.Components;
+using ATS.Helpers;
+using ATS.Models;
 using ATS.Models.Bitstamp;
 using ATS.Models.VALR;
 using ATS.Services;
@@ -86,14 +89,14 @@ namespace ATS
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (txtVALRKeyId.InvokeRequired)
+            if (txtVALRApiKey.InvokeRequired)
             {
                 SetVALRKeyIdCallback d = new SetVALRKeyIdCallback(SetVALRKeyIdText);
                 Invoke(d, new object[] { text });
             }
             else
             {
-                txtVALRKeyId.Text = text;
+                txtVALRApiKey.Text = text;
             }
         }
 
@@ -105,14 +108,14 @@ namespace ATS
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (txtVALRSecret.InvokeRequired)
+            if (txtVALRApiKeySecret.InvokeRequired)
             {
                 SetVALRSecretCallback d = new SetVALRSecretCallback(SetVALRSecretText);
                 Invoke(d, new object[] { text });
             }
             else
             {
-                txtVALRSecret.Text = text;
+                txtVALRApiKeySecret.Text = text;
             }
         }
 
@@ -124,14 +127,14 @@ namespace ATS
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (txtBitmapCustID.InvokeRequired)
+            if (txtBitstampClientID.InvokeRequired)
             {
                 SetBitmapCustIDCallback d = new SetBitmapCustIDCallback(SetBitmapCustIDText);
                 Invoke(d, new object[] { text });
             }
             else
             {
-                txtBitmapCustID.Text = text;
+                txtBitstampClientID.Text = text;
             }
         }
 
@@ -143,14 +146,14 @@ namespace ATS
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (txtBitmapKey.InvokeRequired)
+            if (txtBitstampApiKey.InvokeRequired)
             {
                 SetBitmapKeyCallback d = new SetBitmapKeyCallback(SetBitmapKeyText);
                 Invoke(d, new object[] { text });
             }
             else
             {
-                txtBitmapKey.Text = text;
+                txtBitstampApiKey.Text = text;
             }
         }
 
@@ -266,6 +269,8 @@ namespace ATS
             {
                 errors.Add(error);
 
+                FileHandler.WriteError(error);
+
                 if (errors.Count >= 5)
                     errors.RemoveAt(0);
             }
@@ -287,6 +292,69 @@ namespace ATS
             else
             {
                 btn_ActivateTrading.Enabled = true;
+            }
+        }
+
+
+        delegate void SetActiveMonitoringBtnCallback(bool enabled);
+
+        private void SetActiveMonitoring(bool enabled)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (btn_ActivateMonitoring.InvokeRequired)
+            {
+                SetActiveMonitoringBtnCallback d = new SetActiveMonitoringBtnCallback(SetActiveMonitoring);
+                Invoke(d, new object[] { enabled });
+            }
+            else
+            {
+                btn_ActivateMonitoring.Enabled = true;
+            }
+        }
+
+
+        delegate void StopAllCallback();
+
+        private void StopAll()
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (btn_ActivateMonitoring.InvokeRequired)
+            {
+                StopAllCallback d = new StopAllCallback(StopAll);
+                Invoke(d, new object[] {  });
+            }
+            else
+            {
+                btn_StopAll.PerformClick();
+            }
+        }
+
+
+        delegate void SetNotificationCallback(string message, NotificationType type, string exchange, string otherParam = "");
+
+        private void SetNotification(string message, NotificationType type, string exchange, string otherParam = "")
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (btn_ActivateTrading.InvokeRequired)
+            {
+                SetNotificationCallback d = new SetNotificationCallback(SetNotification);
+                Invoke(d, new object[] { message, type, exchange, otherParam });
+            }
+            else
+            {
+                NotificationForm form = new NotificationForm();
+                form.showNotification(message, exchange, type);
+
+                if (type == NotificationType.ERROR)
+                {
+                    AddErrorText(new ErrorModel(DateTime.Now.ToString(), message, otherParam, exchange));
+                }
             }
         }
 
@@ -333,6 +401,8 @@ namespace ATS
             txtBTI.Text = "0.0001";
             txtRM.Text = "3.2";
 
+            errors = new BindingList<ErrorModel>(FileHandler.GetErrors());
+
             errorBindingSource = new BindingSource(errors, null);
 
             dgv_errorLog.DataSource = errorBindingSource;
@@ -349,14 +419,33 @@ namespace ATS
 
         private void btn_ActivateMonitoring_Click(object sender, EventArgs e)
         {
-            if (monitorThread == null)
-                monitorThread = new Thread(new ThreadStart(Monitor));
+            try
+            {
+                if (string.IsNullOrEmpty(txtVALRApiKey.Text) ||
+                    string.IsNullOrEmpty(txtVALRApiKeySecret.Text) ||
+                    string.IsNullOrEmpty(txtBitstampApiKey.Text) ||
+                    string.IsNullOrEmpty(txtBitstampApiKeySecret.Text) ||
+                    string.IsNullOrEmpty(txtBitstampClientID.Text))
+                {
+                    SetNotification("Please fill in all the Exchange Details before Trading / Monitoring", NotificationType.ERROR, "APPLICATION", "Missing Exchange Details");
+                    return;
+                }
 
-            monitorThread.Start();
+                if (monitorThread == null)
+                    monitorThread = new Thread(new ThreadStart(Monitor));
 
-            isMonitoring = true;
+                monitorThread.Start();
 
-            btn_ActivateMonitoring.Enabled = false;
+                isMonitoring = true;
+
+                btn_ActivateMonitoring.Enabled = false;
+
+                btn_ActivateTrading.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                SetNotification(ex.Message, NotificationType.ERROR, "APPLICATION", ex.Source);
+            }
         }
 
         private void btn_ActivateTrading_Click(object sender, EventArgs e)
@@ -374,7 +463,7 @@ namespace ATS
             }
             catch (Exception ex)
             {
-                AddError(ex.Message, ex.Source, "APPLICATION");
+                SetNotification(ex.Message, NotificationType.ERROR, "APPLICATION", ex.Source);
             }
         }
 
@@ -418,8 +507,8 @@ namespace ATS
                         lblBTIError.Visible = true;
                     }
                 }
-                btn_ActivateMonitoring.Enabled = canMonitor;
-                btn_ActivateTrading.Enabled = canMonitor;
+                if (!isMonitoring)
+                    btn_ActivateMonitoring.Enabled = canMonitor;
             }
             catch (Exception)
             {
@@ -460,11 +549,11 @@ namespace ATS
 
                 buyAndSellThread = null;
                 isTrading = false;
-                btn_ActivateTrading.Enabled = true;
+                btn_ActivateTrading.Enabled = false;
             }
             catch (Exception ex)
             {
-                AddError(ex.Message, ex.Source, "APPLICATION");
+                SetNotification(ex.Message, NotificationType.ERROR, "APPLICATION", ex.Source);
             }
         }
 
@@ -491,6 +580,12 @@ namespace ATS
             }
         }
 
+        private void btnClearErrors_Click(object sender, EventArgs e)
+        {
+            if (errors != null)
+                errors.Clear();
+        }
+
         #endregion
 
         #region Helpers
@@ -501,24 +596,33 @@ namespace ATS
             {
                 try
                 {
-                    IRestResponse response = await ValrService.Get("881c6b0beb12baa68875b2c51bc82b5cfb175bfe3492cfdbe7af045afaf765f3", "99a5c2c177959c19856546b789cdc715737c50d0a6af61abc6a88e9428f50933", "GET", "/v1/marketdata/BTCZAR/orderbook");
+                    IRestResponse response = await ValrService.Get(txtVALRApiKey.Text, txtVALRApiKeySecret.Text, "GET", "/v1/marketdata/BTCZAR/orderbook");
 
                     if (!response.IsSuccessful)
-                        AddError(response.Content, "null", "VALR");
+                    {
+                        StopAll();
+                        SetNotification(response.Content, NotificationType.ERROR, "VALR");
+                    }
                     else
                     {
-                        Debug.WriteLine(response.Content);
-
                         var AskBid = Newtonsoft.Json.JsonConvert.DeserializeObject<OrderBookVALR>(response.Content);
 
                         VBP = Validator.CalcVBP(AskBid.Bids, Convert.ToDouble(txtBTI.Text));
                     }
 
-                    var BitStampResult = await BitStampService.Get("e2VEXCaeW1ExIwHTOE3qIBHaIW2BS490", "neyy1424");
+                    try
+                    {
+                        var BitStampResult = await BitStampService.Get(txtBitstampApiKey.Text, txtBitstampClientID.Text);
 
-                    var orderbook = Newtonsoft.Json.JsonConvert.DeserializeObject<BitstampOrderBook>(BitStampResult);
+                        var orderbook = Newtonsoft.Json.JsonConvert.DeserializeObject<BitstampOrderBook>(BitStampResult);
 
-                    BAP = Validator.CalcBAP(orderbook.asks, Convert.ToDouble(txtBTI.Text));
+                        BAP = Validator.CalcBAP(orderbook.asks, Convert.ToDouble(txtBTI.Text));
+                    }
+                    catch (Exception bitstampEx)
+                    {
+                        StopAll();
+                        SetNotification(bitstampEx.Message, NotificationType.ERROR, "BITSTAMP", bitstampEx.Source);
+                    }
 
                     if (!string.IsNullOrEmpty(txtER.Text))
                     {
@@ -543,7 +647,13 @@ namespace ATS
                 catch (Exception ex)
                 {
                     // TODO: Create Custom Exceptions Here
-                    AddError(ex.Message, ex.Source, "APPLICATION");
+                    SetNotification(ex.Message, NotificationType.ERROR, "APPLICATION", ex.Source);
+
+                    monitorThread = null;
+                    isMonitoring = false;
+                    SetActiveMonitoring(true);
+
+                    StopAll();
                 }
 
                 Thread.Sleep(2000);
@@ -561,72 +671,107 @@ namespace ATS
 
                     if (CM > Convert.ToDouble(txtRM.Text))
                     {
-                        //string jsonString = JsonConvert.SerializeObject(new MarketOrderVALR() { side = "SELL", baseAmount = txtBTI.Text, pair = "BTCZAR" });
+                        string jsonString = JsonConvert.SerializeObject(new MarketOrderVALR() { side = "SELL", baseAmount = txtBTI.Text, pair = "BTCZAR" });
 
-                        //IRestResponse responseVALR = await ValrService.PostMarketOrder("881c6b0beb12baa68875b2c51bc82b5cfb175bfe3492cfdbe7af045afaf765f3", "99a5c2c177959c19856546b789cdc715737c50d0a6af61abc6a88e9428f50933", "POST", "/v1/orders/market", jsonString);
+                        IRestResponse responseVALR = await ValrService.PostMarketOrder(txtVALRApiKey.Text, txtVALRApiKeySecret.Text, "POST", "/v1/orders/market", jsonString);
 
-                        //if (!responseVALR.IsSuccessful)
-                        //    AddError(responseVALR.Content, "null", "VALR");
-                        //else
-                        //{
-                        //    try
-                        //    {
-                        //        MarketOrderResponseVALR marketOrderResponseVALR = JsonConvert.DeserializeObject<MarketOrderResponseVALR>(responseVALR.Content);
+                        if (!responseVALR.IsSuccessful)
+                        {
+                            SetNotification(responseVALR.Content, NotificationType.ERROR, "VALR");
 
-                        //        // Check to see the status of the Order
-                        //        IRestResponse orderResponseVALR = await ValrService.GetOrderStatus("881c6b0beb12baa68875b2c51bc82b5cfb175bfe3492cfdbe7af045afaf765f3", "99a5c2c177959c19856546b789cdc715737c50d0a6af61abc6a88e9428f50933", "GET", $"/v1/orders/BTCZAR/orderid/{marketOrderResponseVALR.id}");
+                            // STOP ALL TRADING
+                            buyAndSellThread = null;
+                            isTrading = false;
+                            SetActiveTradingBtn(false);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                MarketOrderResponseVALR marketOrderResponseVALR = JsonConvert.DeserializeObject<MarketOrderResponseVALR>(responseVALR.Content);
 
-                        //        MarketOrderStatusVALR orderStatusVALR = JsonConvert.DeserializeObject<MarketOrderStatusVALR>(orderResponseVALR.Content);
+                                // Check to see the status of the Order
+                                IRestResponse orderResponseVALR = await ValrService.GetOrderStatus(txtVALRApiKey.Text, txtVALRApiKeySecret.Text, "GET", $"/v1/orders/BTCZAR/orderid/{marketOrderResponseVALR.id}");
 
-                        //        if (string.IsNullOrEmpty(orderStatusVALR.failedReason) && responseVALR.StatusCode == System.Net.HttpStatusCode.Accepted)
-                        //        {
-                        //            // TODO: Notify on Status
-                        //        }
-                        //        else
-                        //        {
-                        //            // Create Error Based on Failed Reason
-                        //            AddError(orderStatusVALR.failedReason, orderStatusVALR.orderStatusType, "VALR");
-                        //        }
-                        //    }
-                        //    catch (Exception valrEx)
-                        //    {
-                        //        AddError(valrEx.Message, valrEx.Source, "VALR");
-                        //    }
-                        //}
+                                MarketOrderStatusVALR orderStatusVALR = JsonConvert.DeserializeObject<MarketOrderStatusVALR>(orderResponseVALR.Content);
+
+                                if (string.IsNullOrEmpty(orderStatusVALR.failedReason) && responseVALR.StatusCode == System.Net.HttpStatusCode.Accepted)
+                                {
+                                    // TODO: Notify on Status
+                                    SetNotification("Order Status: " + orderStatusVALR.orderStatusType, NotificationType.SUCCESS, "VALR", orderStatusVALR.orderType);
+                                }
+                                else
+                                {
+                                    // Create Error Based on Failed Reason
+                                    SetNotification(orderStatusVALR.failedReason, NotificationType.ERROR, "VALR", $"{orderStatusVALR.orderSide}: {orderStatusVALR.orderStatusType}");
+
+                                    // STOP ALL TRADING
+                                    buyAndSellThread = null;
+                                    isTrading = false;
+                                    SetActiveTradingBtn(false);
+                                }
+                            }
+                            catch (Exception valrEx)
+                            {
+                                SetNotification(valrEx.Message, NotificationType.ERROR, "VALR", valrEx.Source);
+
+                                // STOP ALL TRADING
+                                buyAndSellThread = null;
+                                isTrading = false;
+                                SetActiveTradingBtn(false);
+                            }
+                        }
 
                         // Buy Market Order on Bitstamp
-                        IRestResponse BitStampResult = await BitStampService.PostMarketOrder("2pMX7tjPlZe6sMX18GKoTYf2Axr5kExv", "e2VEXCaeW1ExIwHTOE3qIBHaIW2BS490", txtBTI.Text);
+                        IRestResponse BitStampResult = await BitStampService.PostMarketOrder(txtBitstampApiKeySecret.Text, txtBitstampApiKey.Text, txtBTI.Text);
 
                         BitstampOrderError bitstampOrderError = JsonConvert.DeserializeObject<BitstampOrderError>(BitStampResult.Content);
 
                         if (!BitStampResult.IsSuccessful || bitstampOrderError != null ? bitstampOrderError.status == "error" : bitstampOrderError == null)
-                            AddError(
-                                bitstampOrderError != null ? bitstampOrderError.reason.__all__[0] : BitStampResult.Content,
-                                bitstampOrderError != null && bitstampOrderError.reason.__all__.Count > 1 ? bitstampOrderError.reason.__all__[1] : "null",
-                                "BITSTAMP");
+                        {
+                            SetNotification(bitstampOrderError != null ? bitstampOrderError.reason.__all__[0] : BitStampResult.Content,
+                                NotificationType.ERROR, "BITSTAMP",
+                                bitstampOrderError != null && bitstampOrderError.reason.__all__.Count > 1 ? bitstampOrderError.reason.__all__[1] : "null");
+
+                            // STOP ALL TRADING
+                            buyAndSellThread = null;
+                            isTrading = false;
+                            SetActiveTradingBtn(false);
+                        }
                         else
                         {
                             try
                             {
                                 BitstampMarketOrderResponse bitstampMarketOrderResponse = JsonConvert.DeserializeObject<BitstampMarketOrderResponse>(BitStampResult.Content);
 
-                                IRestResponse bitstampOrderStatus = await BitStampService.GetOrderStatus("2pMX7tjPlZe6sMX18GKoTYf2Axr5kExv", "e2VEXCaeW1ExIwHTOE3qIBHaIW2BS490", bitstampMarketOrderResponse.id);
+                                IRestResponse bitstampOrderStatus = await BitStampService.GetOrderStatus(txtBitstampApiKeySecret.Text, txtBitstampApiKey.Text, bitstampMarketOrderResponse.id);
 
                                 BitstampMarketOrderStatus bitstampMarketOrderStatus = JsonConvert.DeserializeObject<BitstampMarketOrderStatus>(bitstampOrderStatus.Content);
 
                                 if (bitstampMarketOrderStatus.status != "Canceled" && BitStampResult.StatusCode == System.Net.HttpStatusCode.OK)
                                 {
                                     // TODO: Notify on Status
+                                    SetNotification("Order Status: " + bitstampMarketOrderStatus.status, NotificationType.SUCCESS, "BITSTAMP", "Amount Remaining: " + bitstampMarketOrderStatus.amount_remaining);
                                 }
                                 else
                                 {
                                     // Create Error Based on Failed Reason
-                                    AddError(bitstampMarketOrderStatus.status, "Amount Remaining: " + bitstampMarketOrderStatus.amount_remaining, "BITSTAMP");
+                                    SetNotification(bitstampMarketOrderStatus.status, NotificationType.ERROR, "BITSTAMP", "Amount Remaining: " + bitstampMarketOrderStatus.amount_remaining);
+
+                                    // STOP ALL TRADING
+                                    buyAndSellThread = null;
+                                    isTrading = false;
+                                    SetActiveTradingBtn(false);
                                 }
                             }
                             catch (Exception bitstampEx)
                             {
-                                AddError(bitstampEx.Message, bitstampEx.Source, "BITSTAMP");
+                                SetNotification(bitstampEx.Message, NotificationType.ERROR, "BITSTAMP", bitstampEx.Source);
+
+                                // STOP ALL TRADING
+                                buyAndSellThread = null;
+                                isTrading = false;
+                                SetActiveTradingBtn(false);
                             }
                         }
 
@@ -635,7 +780,7 @@ namespace ATS
                 }
                 catch (Exception ex)
                 {
-                    AddError(ex.Message, ex.Source, "APPLICATION");
+                    SetNotification(ex.Message, NotificationType.ERROR, "APPLICATION", ex.Source);
 
                     // STOP ALL TRADING
                     buyAndSellThread = null;
@@ -649,9 +794,6 @@ namespace ATS
         private void AddError(string error, string otherParam, string exchange)
         {
             AddErrorText(new ErrorModel(DateTime.Now.ToString(), error, otherParam, exchange));
-
-            // TODO: Add error to .txt File
-
         }
 
         #endregion

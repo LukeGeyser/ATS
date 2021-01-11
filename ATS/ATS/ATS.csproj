@@ -53,12 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerators\NotificationAction.cs" />
+    <Compile Include="Enumerators\NotificationType.cs" />
+    <Compile Include="Forms\Components\NotificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\NotificationForm.Designer.cs">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Models\Bitstamp\BitstampAsk.cs" />
     <Compile Include="Models\Bitstamp\BitstampMarketOrderResponse.cs" />
     <Compile Include="Models\Bitstamp\BitstampMarketOrderStatus.cs" />
@@ -78,6 +87,9 @@
     <Compile Include="Helpers\BitStampValidator.cs" />
     <Compile Include="Services\Validator.cs" />
     <Compile Include="Services\ValrService.cs" />
+    <EmbeddedResource Include="Forms\Components\NotificationForm.resx">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -104,6 +117,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Success.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
