@@ -680,6 +680,7 @@ namespace ATS
                             buyAndSellThread = null;
                             isTrading = false;
                             SetActiveTradingBtn(false);
+                            return;
                         }
                         else
                         {
@@ -706,6 +707,7 @@ namespace ATS
                                     buyAndSellThread = null;
                                     isTrading = false;
                                     SetActiveTradingBtn(false);
+                                    return;
                                 }
                             }
                             catch (Exception valrEx)
@@ -716,6 +718,7 @@ namespace ATS
                                 buyAndSellThread = null;
                                 isTrading = false;
                                 SetActiveTradingBtn(false);
+                                return;
                             }
                         }
 
@@ -734,6 +737,7 @@ namespace ATS
                             buyAndSellThread = null;
                             isTrading = false;
                             SetActiveTradingBtn(false);
+                            return;
                         }
                         else
                         {
@@ -759,6 +763,7 @@ namespace ATS
                                     buyAndSellThread = null;
                                     isTrading = false;
                                     SetActiveTradingBtn(false);
+                                    return;
                                 }
                             }
                             catch (Exception bitstampEx)
@@ -769,6 +774,7 @@ namespace ATS
                                 buyAndSellThread = null;
                                 isTrading = false;
                                 SetActiveTradingBtn(false);
+                                return;
                             }
                         }
 
