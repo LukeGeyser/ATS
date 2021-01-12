@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ATS.Services
 {
@@ -33,7 +34,7 @@ namespace ATS.Services
                 if (counter == 20)
                     return 9999999;
 
-                quantities += Convert.ToDouble(bid.Quantity);
+                quantities += Convert.ToDouble(bid.Quantity, CultureInfo.InvariantCulture);
                 _checkedBids.Add(bid);
 
                 if (quantities >= BTI && inital)
