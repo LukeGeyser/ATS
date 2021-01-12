@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
+            this.txtBitstampApiKeySecret = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblBTIError = new System.Windows.Forms.Label();
             this.txtER = new System.Windows.Forms.TextBox();
             this.txtBTI = new System.Windows.Forms.TextBox();
@@ -63,6 +66,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lbl_valrbidprice = new System.Windows.Forms.Label();
             this.pnl_activations = new System.Windows.Forms.Panel();
+            this.btnClearErrors = new System.Windows.Forms.Button();
             this.btn_StopAll = new System.Windows.Forms.Button();
             this.btn_ActivateTrading = new System.Windows.Forms.Button();
             this.btn_ActivateMonitoring = new System.Windows.Forms.Button();
@@ -70,10 +74,7 @@
             this.pnl_ErrorLog = new System.Windows.Forms.Panel();
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.lbl_errorLog = new System.Windows.Forms.Label();
-            this.btnClearErrors = new System.Windows.Forms.Button();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBitstampApiKeySecret = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -118,6 +119,22 @@
             this.pnl_Inputs.Name = "pnl_Inputs";
             this.pnl_Inputs.Size = new System.Drawing.Size(989, 189);
             this.pnl_Inputs.TabIndex = 1;
+            // 
+            // txtBitstampApiKeySecret
+            // 
+            this.txtBitstampApiKeySecret.Location = new System.Drawing.Point(623, 165);
+            this.txtBitstampApiKeySecret.Name = "txtBitstampApiKeySecret";
+            this.txtBitstampApiKeySecret.Size = new System.Drawing.Size(254, 20);
+            this.txtBitstampApiKeySecret.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(510, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "API Key Secret:";
             // 
             // lblBTIError
             // 
@@ -393,6 +410,16 @@
             this.pnl_activations.Size = new System.Drawing.Size(989, 83);
             this.pnl_activations.TabIndex = 19;
             // 
+            // btnClearErrors
+            // 
+            this.btnClearErrors.Location = new System.Drawing.Point(719, 28);
+            this.btnClearErrors.Name = "btnClearErrors";
+            this.btnClearErrors.Size = new System.Drawing.Size(99, 43);
+            this.btnClearErrors.TabIndex = 15;
+            this.btnClearErrors.Text = "Clear Errors";
+            this.btnClearErrors.UseVisualStyleBackColor = true;
+            this.btnClearErrors.Click += new System.EventHandler(this.btnClearErrors_Click);
+            // 
             // btn_StopAll
             // 
             this.btn_StopAll.Location = new System.Drawing.Point(529, 28);
@@ -451,14 +478,14 @@
             this.dgv_errorLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_errorLog.CausesValidation = false;
             this.dgv_errorLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_errorLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_errorLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_errorLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_errorLog.Location = new System.Drawing.Point(3, 36);
             this.dgv_errorLog.Name = "dgv_errorLog";
@@ -478,35 +505,9 @@
             this.lbl_errorLog.TabIndex = 0;
             this.lbl_errorLog.Text = "Error Log";
             // 
-            // btnClearErrors
-            // 
-            this.btnClearErrors.Location = new System.Drawing.Point(719, 28);
-            this.btnClearErrors.Name = "btnClearErrors";
-            this.btnClearErrors.Size = new System.Drawing.Size(99, 43);
-            this.btnClearErrors.TabIndex = 15;
-            this.btnClearErrors.Text = "Clear Errors";
-            this.btnClearErrors.UseVisualStyleBackColor = true;
-            this.btnClearErrors.Click += new System.EventHandler(this.btnClearErrors_Click);
-            // 
             // mainWindowBindingSource
             // 
             this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
-            // 
-            // txtBitstampApiKeySecret
-            // 
-            this.txtBitstampApiKeySecret.Location = new System.Drawing.Point(623, 165);
-            this.txtBitstampApiKeySecret.Name = "txtBitstampApiKeySecret";
-            this.txtBitstampApiKeySecret.Size = new System.Drawing.Size(254, 20);
-            this.txtBitstampApiKeySecret.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(510, 168);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "API Key Secret:";
             // 
             // MainWindow
             // 
@@ -517,6 +518,7 @@
             this.Controls.Add(this.pnl_activations);
             this.Controls.Add(this.pnl_monitor);
             this.Controls.Add(this.pnl_Inputs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1029, 688);
             this.Name = "MainWindow";
             this.Text = "Arbitrade Trading Software";
