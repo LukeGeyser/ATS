@@ -18,7 +18,7 @@ namespace ATS.Services
         public static double CalcVBP(List<AskBid> oldbids, double BTI)
         {
 
-            var bids = oldbids.OrderByDescending(bid => Convert.ToDouble(bid.Price));
+            var bids = oldbids.OrderByDescending(bid => Convert.ToDouble(bid.Price, CultureInfo.InvariantCulture));
 
             int counter = 0;
 
@@ -39,7 +39,7 @@ namespace ATS.Services
 
                 if (quantities >= BTI && inital)
                 {
-                    VBP = Convert.ToDouble(bid.Price);
+                    VBP = Convert.ToDouble(bid.Price, CultureInfo.InvariantCulture);
                     return VBP;
                 }
                 else if (quantities >= BTI)
@@ -59,7 +59,7 @@ namespace ATS.Services
             double VBP = 0.0;
             foreach (var bid in bids)
             {
-                VBP += Convert.ToDouble(bid.Price) * (Convert.ToDouble(bid.Quantity) / quantity);
+                VBP += Convert.ToDouble(bid.Price, CultureInfo.InvariantCulture) * (Convert.ToDouble(bid.Quantity, CultureInfo.InvariantCulture) / quantity);
             }
             return VBP;
         }
@@ -80,7 +80,7 @@ namespace ATS.Services
                 convertedAsks.Add(new BitstampAsk() { Price = a[0], Quantity = a[1] });
             }
 
-            var orderedAsks = convertedAsks.OrderByDescending(ask => Convert.ToDouble(ask.Price));
+            var orderedAsks = convertedAsks.OrderByDescending(ask => Convert.ToDouble(ask.Price, CultureInfo.InvariantCulture));
 
             int counter = 0;
 
@@ -96,12 +96,12 @@ namespace ATS.Services
                 if (counter == 20)
                     return 0;
 
-                quantities += Convert.ToDouble(ask.Quantity);
+                quantities += Convert.ToDouble(ask.Quantity, CultureInfo.InvariantCulture);
                 _checkedBids.Add(ask);
 
                 if (quantities >= BTI && inital)
                 {
-                    VBP = Convert.ToDouble(ask.Price);
+                    VBP = Convert.ToDouble(ask.Price, CultureInfo.InvariantCulture);
                     return VBP;
                 }
                 else if (quantities >= BTI)
@@ -121,7 +121,7 @@ namespace ATS.Services
             double VBP = 0.0;
             foreach (var bid in asks)
             {
-                VBP += Convert.ToDouble(bid.Price) * (Convert.ToDouble(bid.Quantity) / quantity);
+                VBP += Convert.ToDouble(bid.Price, CultureInfo.InvariantCulture) * (Convert.ToDouble(bid.Quantity, CultureInfo.InvariantCulture) / quantity);
             }
             return VBP;
         }

@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -397,10 +398,6 @@ namespace ATS
             btn_ActivateMonitoring.Enabled = canMonitor;
             btn_ActivateTrading.Enabled = canMonitor;
 
-            txtER.Text = "18.7";
-            txtBTI.Text = "0.0001";
-            txtRM.Text = "3.2";
-
             errors = new BindingList<ErrorModel>(FileHandler.GetErrors());
 
             errorBindingSource = new BindingSource(errors, null);
@@ -476,11 +473,11 @@ namespace ATS
         {
             try
             {
-                var BTI = Convert.ToDouble(txtBTI.Text);
+                var BTI = Convert.ToDouble(txtBTI.Text, CultureInfo.InvariantCulture);
                 if (!string.IsNullOrEmpty(txtBitstampAskPrice.Text))
                 {
 
-                    var BAP = Convert.ToDouble(txtBitstampAskPrice.Text);
+                    var BAP = Convert.ToDouble(txtBitstampAskPrice.Text, CultureInfo.InvariantCulture);
                     if (BTI > 0.001 && BTI > (25 / BAP))
                     {
                         canMonitor = true;
@@ -607,7 +604,7 @@ namespace ATS
                     {
                         var AskBid = Newtonsoft.Json.JsonConvert.DeserializeObject<OrderBookVALR>(response.Content);
 
-                        VBP = Validator.CalcVBP(AskBid.Bids, Convert.ToDouble(txtBTI.Text));
+                        VBP = Validator.CalcVBP(AskBid.Bids, Convert.ToDouble(txtBTI.Text, CultureInfo.InvariantCulture));
                     }
 
                     try
@@ -616,7 +613,7 @@ namespace ATS
 
                         var orderbook = Newtonsoft.Json.JsonConvert.DeserializeObject<BitstampOrderBook>(BitStampResult);
 
-                        BAP = Validator.CalcBAP(orderbook.asks, Convert.ToDouble(txtBTI.Text));
+                        BAP = Validator.CalcBAP(orderbook.asks, Convert.ToDouble(txtBTI.Text, CultureInfo.InvariantCulture));
                     }
                     catch (Exception bitstampEx)
                     {
@@ -626,7 +623,7 @@ namespace ATS
 
                     if (!string.IsNullOrEmpty(txtER.Text))
                     {
-                        BCP = BAP * Convert.ToDouble(txtER.Text);
+                        BCP = BAP * Convert.ToDouble(txtER.Text, CultureInfo.InvariantCulture);
 
                         CM = ((VBP - BCP) / BCP) * 100;
 
@@ -669,7 +666,7 @@ namespace ATS
                     if (string.IsNullOrEmpty(txtRM.Text))
                         return;
 
-                    if (CM > Convert.ToDouble(txtRM.Text))
+                    if (CM > Convert.ToDouble(txtRM.Text, CultureInfo.InvariantCulture))
                     {
                         string jsonString = JsonConvert.SerializeObject(new MarketOrderVALR() { side = "SELL", baseAmount = txtBTI.Text, pair = "BTCZAR" });
 
