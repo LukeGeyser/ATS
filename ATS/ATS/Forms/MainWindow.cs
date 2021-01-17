@@ -293,6 +293,10 @@ namespace ATS
             else
             {
                 btn_ActivateTrading.Enabled = true;
+                totalSellBTI = 0.0;
+                totalBuyBTI = 0.0;
+                SetSellTotal(totalSellBTI.ToString());
+                SetBuyTotal(totalBuyBTI.ToString());
             }
         }
 
@@ -359,6 +363,42 @@ namespace ATS
             }
         }
 
+        delegate void SetBuyTotalCallback(string text);
+
+        private void SetBuyTotal(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (txtBuyTotal.InvokeRequired)
+            {
+                SetBuyTotalCallback d = new SetBuyTotalCallback(SetBuyTotal);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                txtBuyTotal.Text = text;
+            }
+        }
+
+        delegate void SetSellTotalCallback(string text);
+
+        private void SetSellTotal(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (txtSellTotal.InvokeRequired)
+            {
+                SetSellTotalCallback d = new SetSellTotalCallback(SetSellTotal);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                txtSellTotal.Text = text;
+            }
+        }
+
         #endregion
 
         #region Properties
@@ -369,9 +409,15 @@ namespace ATS
 
         public double BCP = 0.0;
 
+        public double BTL = 0.0;
+
         public double CM = 0.0;
 
         public double HM = 0.0;
+
+        public double totalSellBTI = 0.0;
+
+        public double totalBuyBTI = 0.0;
 
         bool canMonitor = false;
 
@@ -663,6 +709,15 @@ namespace ATS
             {
                 try
                 {
+                    if (totalBuyBTI >= Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture) || totalSellBTI >= Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture))
+                    {
+                        // STOP ALL TRADING
+                        buyAndSellThread = null;
+                        isTrading = false;
+                        SetActiveTradingBtn(false);
+                        break;
+                    }
+
                     if (string.IsNullOrEmpty(txtRM.Text))
                         return;
 
@@ -697,6 +752,8 @@ namespace ATS
                                 {
                                     // TODO: Notify on Status
                                     SetNotification("Order Status: " + orderStatusVALR.orderStatusType, NotificationType.SUCCESS, "VALR", orderStatusVALR.orderType);
+                                    totalSellBTI += Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture);
+                                    SetSellTotal(totalSellBTI.ToString());
                                 }
                                 else
                                 {
@@ -753,6 +810,9 @@ namespace ATS
                                 {
                                     // TODO: Notify on Status
                                     SetNotification("Order Status: " + bitstampMarketOrderStatus.status, NotificationType.SUCCESS, "BITSTAMP", "Amount Remaining: " + bitstampMarketOrderStatus.amount_remaining);
+
+                                    totalBuyBTI += Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture);
+                                    SetBuyTotal(totalBuyBTI.ToString());
                                 }
                                 else
                                 {

@@ -33,6 +33,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.lbl_Inputs = new System.Windows.Forms.Label();
             this.pnl_Inputs = new System.Windows.Forms.Panel();
+            this.txtBTL = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtBitstampApiKeySecret = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBTIError = new System.Windows.Forms.Label();
@@ -75,6 +77,10 @@
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.lbl_errorLog = new System.Windows.Forms.Label();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtBuyTotal = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSellTotal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -95,6 +101,8 @@
             // 
             // pnl_Inputs
             // 
+            this.pnl_Inputs.Controls.Add(this.txtBTL);
+            this.pnl_Inputs.Controls.Add(this.label2);
             this.pnl_Inputs.Controls.Add(this.txtBitstampApiKeySecret);
             this.pnl_Inputs.Controls.Add(this.label1);
             this.pnl_Inputs.Controls.Add(this.lblBTIError);
@@ -120,6 +128,22 @@
             this.pnl_Inputs.Size = new System.Drawing.Size(989, 189);
             this.pnl_Inputs.TabIndex = 1;
             // 
+            // txtBTL
+            // 
+            this.txtBTL.Location = new System.Drawing.Point(141, 153);
+            this.txtBTL.Name = "txtBTL";
+            this.txtBTL.Size = new System.Drawing.Size(121, 20);
+            this.txtBTL.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Bitcoin Trade Limit";
+            // 
             // txtBitstampApiKeySecret
             // 
             this.txtBitstampApiKeySecret.Location = new System.Drawing.Point(623, 165);
@@ -140,7 +164,7 @@
             // 
             this.lblBTIError.AutoSize = true;
             this.lblBTIError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblBTIError.Location = new System.Drawing.Point(268, 112);
+            this.lblBTIError.Location = new System.Drawing.Point(268, 93);
             this.lblBTIError.Name = "lblBTIError";
             this.lblBTIError.Size = new System.Drawing.Size(120, 13);
             this.lblBTIError.TabIndex = 20;
@@ -155,7 +179,7 @@
             // 
             // txtBTI
             // 
-            this.txtBTI.Location = new System.Drawing.Point(141, 109);
+            this.txtBTI.Location = new System.Drawing.Point(141, 90);
             this.txtBTI.Name = "txtBTI";
             this.txtBTI.Size = new System.Drawing.Size(121, 20);
             this.txtBTI.TabIndex = 18;
@@ -247,7 +271,7 @@
             // 
             // txtRM
             // 
-            this.txtRM.Location = new System.Drawing.Point(141, 158);
+            this.txtRM.Location = new System.Drawing.Point(141, 122);
             this.txtRM.Name = "txtRM";
             this.txtRM.Size = new System.Drawing.Size(121, 20);
             this.txtRM.TabIndex = 7;
@@ -255,7 +279,7 @@
             // lbl_requiredmargin
             // 
             this.lbl_requiredmargin.AutoSize = true;
-            this.lbl_requiredmargin.Location = new System.Drawing.Point(15, 165);
+            this.lbl_requiredmargin.Location = new System.Drawing.Point(15, 125);
             this.lbl_requiredmargin.Name = "lbl_requiredmargin";
             this.lbl_requiredmargin.Size = new System.Drawing.Size(85, 13);
             this.lbl_requiredmargin.TabIndex = 6;
@@ -264,7 +288,7 @@
             // lbl_tradeIncre
             // 
             this.lbl_tradeIncre.AutoSize = true;
-            this.lbl_tradeIncre.Location = new System.Drawing.Point(15, 112);
+            this.lbl_tradeIncre.Location = new System.Drawing.Point(15, 93);
             this.lbl_tradeIncre.Name = "lbl_tradeIncre";
             this.lbl_tradeIncre.Size = new System.Drawing.Size(120, 13);
             this.lbl_tradeIncre.TabIndex = 4;
@@ -273,7 +297,7 @@
             // lbl_ExhcangeRate
             // 
             this.lbl_ExhcangeRate.AutoSize = true;
-            this.lbl_ExhcangeRate.Location = new System.Drawing.Point(15, 61);
+            this.lbl_ExhcangeRate.Location = new System.Drawing.Point(15, 62);
             this.lbl_ExhcangeRate.Name = "lbl_ExhcangeRate";
             this.lbl_ExhcangeRate.Size = new System.Drawing.Size(81, 13);
             this.lbl_ExhcangeRate.TabIndex = 2;
@@ -281,7 +305,11 @@
             // 
             // pnl_monitor
             // 
+            this.pnl_monitor.Controls.Add(this.txtSellTotal);
+            this.pnl_monitor.Controls.Add(this.label4);
+            this.pnl_monitor.Controls.Add(this.txtBuyTotal);
             this.pnl_monitor.Controls.Add(this.txtBitstampConvertedPrice);
+            this.pnl_monitor.Controls.Add(this.label3);
             this.pnl_monitor.Controls.Add(this.txtBitstampAskPrice);
             this.pnl_monitor.Controls.Add(this.txtVALRBidPrice);
             this.pnl_monitor.Controls.Add(this.btn_ResetHighestMargin);
@@ -321,7 +349,7 @@
             // 
             // btn_ResetHighestMargin
             // 
-            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(529, 71);
+            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(719, 64);
             this.btn_ResetHighestMargin.Name = "btn_ResetHighestMargin";
             this.btn_ResetHighestMargin.Size = new System.Drawing.Size(99, 43);
             this.btn_ResetHighestMargin.TabIndex = 12;
@@ -331,15 +359,15 @@
             // 
             // txtHighestMargin
             // 
-            this.txtHighestMargin.Location = new System.Drawing.Point(404, 83);
+            this.txtHighestMargin.Location = new System.Drawing.Point(448, 40);
             this.txtHighestMargin.Name = "txtHighestMargin";
-            this.txtHighestMargin.Size = new System.Drawing.Size(74, 20);
+            this.txtHighestMargin.Size = new System.Drawing.Size(121, 20);
             this.txtHighestMargin.TabIndex = 11;
             // 
             // lbl_highestmargin
             // 
             this.lbl_highestmargin.AutoSize = true;
-            this.lbl_highestmargin.Location = new System.Drawing.Point(322, 86);
+            this.lbl_highestmargin.Location = new System.Drawing.Point(350, 43);
             this.lbl_highestmargin.Name = "lbl_highestmargin";
             this.lbl_highestmargin.Size = new System.Drawing.Size(78, 13);
             this.lbl_highestmargin.TabIndex = 10;
@@ -356,7 +384,7 @@
             // 
             // txtCurrentMargin
             // 
-            this.txtCurrentMargin.Location = new System.Drawing.Point(141, 140);
+            this.txtCurrentMargin.Location = new System.Drawing.Point(141, 143);
             this.txtCurrentMargin.Name = "txtCurrentMargin";
             this.txtCurrentMargin.Size = new System.Drawing.Size(121, 20);
             this.txtCurrentMargin.TabIndex = 7;
@@ -364,7 +392,7 @@
             // lbl_currentmargin
             // 
             this.lbl_currentmargin.AutoSize = true;
-            this.lbl_currentmargin.Location = new System.Drawing.Point(15, 147);
+            this.lbl_currentmargin.Location = new System.Drawing.Point(15, 150);
             this.lbl_currentmargin.Name = "lbl_currentmargin";
             this.lbl_currentmargin.Size = new System.Drawing.Size(76, 13);
             this.lbl_currentmargin.TabIndex = 6;
@@ -509,6 +537,38 @@
             // 
             this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
             // 
+            // txtBuyTotal
+            // 
+            this.txtBuyTotal.Location = new System.Drawing.Point(448, 76);
+            this.txtBuyTotal.Name = "txtBuyTotal";
+            this.txtBuyTotal.Size = new System.Drawing.Size(121, 20);
+            this.txtBuyTotal.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(350, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Buy Total:";
+            // 
+            // txtSellTotal
+            // 
+            this.txtSellTotal.Location = new System.Drawing.Point(448, 110);
+            this.txtSellTotal.Name = "txtSellTotal";
+            this.txtSellTotal.Size = new System.Drawing.Size(121, 20);
+            this.txtSellTotal.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(350, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Sell Total: ";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,6 +642,12 @@
         private System.Windows.Forms.Button btnClearErrors;
         private System.Windows.Forms.TextBox txtBitstampApiKeySecret;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBTL;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSellTotal;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtBuyTotal;
+        private System.Windows.Forms.Label label3;
     }
 }
 
