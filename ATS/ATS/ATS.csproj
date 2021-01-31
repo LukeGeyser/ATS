@@ -92,6 +92,7 @@
     <Compile Include="Helpers\BitStampValidator.cs" />
     <Compile Include="Services\Validator.cs" />
     <Compile Include="Services\ValrService.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\Components\NotificationForm.resx">
       <DependentUpon>NotificationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,7 +111,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">

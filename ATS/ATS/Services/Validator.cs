@@ -32,7 +32,7 @@ namespace ATS.Services
             {
 
                 if (counter == 20)
-                    return 9999999;
+                    return 0;
 
                 quantities += Convert.ToDouble(bid.Quantity, CultureInfo.InvariantCulture);
                 _checkedBids.Add(bid);
@@ -94,7 +94,7 @@ namespace ATS.Services
             {
 
                 if (counter == 20)
-                    return 0;
+                    return 9999999;
 
                 quantities += Convert.ToDouble(ask.Quantity, CultureInfo.InvariantCulture);
                 _checkedBids.Add(ask);

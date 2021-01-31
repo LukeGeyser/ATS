@@ -449,6 +449,12 @@ namespace ATS
             errorBindingSource = new BindingSource(errors, null);
 
             dgv_errorLog.DataSource = errorBindingSource;
+
+            txtVALRApiKey.Text = Properties.Settings.Default.VALRApiKey;
+            txtVALRApiKeySecret.Text = Properties.Settings.Default.VALRKeySecret;
+            txtBitstampClientID.Text = Properties.Settings.Default.BITSTAMPClientID;
+            txtBitstampApiKey.Text = Properties.Settings.Default.BITSTAMPApiKey;
+            txtBitstampApiKeySecret.Text = Properties.Settings.Default.BITSTAMPKeySecret;
         }
 
         #endregion
@@ -627,6 +633,36 @@ namespace ATS
         {
             if (errors != null)
                 errors.Clear();
+        }
+
+        private void txtVALRApiKey_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.VALRApiKey = ((TextBox)sender).Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void txtVALRApiKeySecret_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.VALRKeySecret = ((TextBox)sender).Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void txtBitstampClientID_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BITSTAMPClientID = ((TextBox)sender).Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void txtBitstampApiKey_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BITSTAMPApiKey = ((TextBox)sender).Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void txtBitstampApiKeySecret_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BITSTAMPKeySecret = ((TextBox)sender).Text;
+            Properties.Settings.Default.Save();
         }
 
         #endregion
@@ -860,5 +896,6 @@ namespace ATS
         }
 
         #endregion
+
     }
 }

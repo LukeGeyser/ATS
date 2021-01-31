@@ -55,7 +55,11 @@
             this.lbl_tradeIncre = new System.Windows.Forms.Label();
             this.lbl_ExhcangeRate = new System.Windows.Forms.Label();
             this.pnl_monitor = new System.Windows.Forms.Panel();
+            this.txtSellTotal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtBuyTotal = new System.Windows.Forms.TextBox();
             this.txtBitstampConvertedPrice = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtBitstampAskPrice = new System.Windows.Forms.TextBox();
             this.txtVALRBidPrice = new System.Windows.Forms.TextBox();
             this.btn_ResetHighestMargin = new System.Windows.Forms.Button();
@@ -77,10 +81,6 @@
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.lbl_errorLog = new System.Windows.Forms.Label();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBuyTotal = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtSellTotal = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -150,6 +150,7 @@
             this.txtBitstampApiKeySecret.Name = "txtBitstampApiKeySecret";
             this.txtBitstampApiKeySecret.Size = new System.Drawing.Size(254, 20);
             this.txtBitstampApiKeySecret.TabIndex = 22;
+            this.txtBitstampApiKeySecret.TextChanged += new System.EventHandler(this.txtBitstampApiKeySecret_TextChanged);
             // 
             // label1
             // 
@@ -191,6 +192,7 @@
             this.txtBitstampApiKey.Name = "txtBitstampApiKey";
             this.txtBitstampApiKey.Size = new System.Drawing.Size(254, 20);
             this.txtBitstampApiKey.TabIndex = 17;
+            this.txtBitstampApiKey.TextChanged += new System.EventHandler(this.txtBitstampApiKey_TextChanged);
             // 
             // txtBitstampClientID
             // 
@@ -198,6 +200,7 @@
             this.txtBitstampClientID.Name = "txtBitstampClientID";
             this.txtBitstampClientID.Size = new System.Drawing.Size(254, 20);
             this.txtBitstampClientID.TabIndex = 16;
+            this.txtBitstampClientID.TextChanged += new System.EventHandler(this.txtBitstampClientID_TextChanged);
             // 
             // txtVALRApiKeySecret
             // 
@@ -205,6 +208,7 @@
             this.txtVALRApiKeySecret.Name = "txtVALRApiKeySecret";
             this.txtVALRApiKeySecret.Size = new System.Drawing.Size(254, 20);
             this.txtVALRApiKeySecret.TabIndex = 15;
+            this.txtVALRApiKeySecret.TextChanged += new System.EventHandler(this.txtVALRApiKeySecret_TextChanged);
             // 
             // txtVALRApiKey
             // 
@@ -212,6 +216,7 @@
             this.txtVALRApiKey.Name = "txtVALRApiKey";
             this.txtVALRApiKey.Size = new System.Drawing.Size(254, 20);
             this.txtVALRApiKey.TabIndex = 14;
+            this.txtVALRApiKey.TextChanged += new System.EventHandler(this.txtVALRApiKey_TextChanged);
             // 
             // lbl_APIKey
             // 
@@ -326,12 +331,44 @@
             this.pnl_monitor.Size = new System.Drawing.Size(989, 170);
             this.pnl_monitor.TabIndex = 18;
             // 
+            // txtSellTotal
+            // 
+            this.txtSellTotal.Location = new System.Drawing.Point(448, 110);
+            this.txtSellTotal.Name = "txtSellTotal";
+            this.txtSellTotal.Size = new System.Drawing.Size(121, 20);
+            this.txtSellTotal.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(350, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Sell Total: ";
+            // 
+            // txtBuyTotal
+            // 
+            this.txtBuyTotal.Location = new System.Drawing.Point(448, 76);
+            this.txtBuyTotal.Name = "txtBuyTotal";
+            this.txtBuyTotal.Size = new System.Drawing.Size(121, 20);
+            this.txtBuyTotal.TabIndex = 26;
+            // 
             // txtBitstampConvertedPrice
             // 
             this.txtBitstampConvertedPrice.Location = new System.Drawing.Point(141, 110);
             this.txtBitstampConvertedPrice.Name = "txtBitstampConvertedPrice";
             this.txtBitstampConvertedPrice.Size = new System.Drawing.Size(121, 20);
             this.txtBitstampConvertedPrice.TabIndex = 23;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(350, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Buy Total:";
             // 
             // txtBitstampAskPrice
             // 
@@ -536,38 +573,6 @@
             // mainWindowBindingSource
             // 
             this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
-            // 
-            // txtBuyTotal
-            // 
-            this.txtBuyTotal.Location = new System.Drawing.Point(448, 76);
-            this.txtBuyTotal.Name = "txtBuyTotal";
-            this.txtBuyTotal.Size = new System.Drawing.Size(121, 20);
-            this.txtBuyTotal.TabIndex = 26;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(350, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Buy Total:";
-            // 
-            // txtSellTotal
-            // 
-            this.txtSellTotal.Location = new System.Drawing.Point(448, 110);
-            this.txtSellTotal.Name = "txtSellTotal";
-            this.txtSellTotal.Size = new System.Drawing.Size(121, 20);
-            this.txtSellTotal.TabIndex = 28;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(350, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Sell Total: ";
             // 
             // MainWindow
             // 
