@@ -12,10 +12,11 @@ namespace ATS.Helpers
     public static class FileHandler
     {
         private const string _FILENAME = "error_log.txt";
+        static string path = Directory.GetCurrentDirectory();
 
         public static void WriteError(ErrorModel error)
         {
-            using (StreamWriter writer = new StreamWriter(_FILENAME, true))
+            using (StreamWriter writer = new StreamWriter(path + _FILENAME, true))
             {
                 writer.WriteLine($"{error.DateTime}|{error.Error}|{error.OtherParameter}|{error.Exchange}");
             }
