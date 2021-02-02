@@ -27,10 +27,10 @@ namespace ATS.Helpers
             List<ErrorModel> errors = new List<ErrorModel>();
             try
             {
-                FileStream fs = new FileStream(_FILENAME, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                FileStream fs = new FileStream(path + _FILENAME, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 fs.Close();
 
-                using (StreamReader reader = new StreamReader(_FILENAME))
+                using (StreamReader reader = new StreamReader(path + _FILENAME))
                 {
                     string[] _arrayData = new string[4];
                     string _tempData;
