@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 using System.IO;
 using ATS.Models;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace ATS.Helpers
 {
     public static class FileHandler
     {
         private const string _FILENAME = "error_log.txt";
-        static string path = Directory.GetCurrentDirectory();
+        static string path = Directory.GetCurrentDirectory() + '\\' + _FILENAME;
 
         public static void WriteError(ErrorModel error)
         {
-            using (StreamWriter writer = new StreamWriter(path + _FILENAME, true))
+            FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            fs.Close();
+            using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine($"{error.DateTime}|{error.Error}|{error.OtherParameter}|{error.Exchange}");
             }
@@ -27,10 +30,10 @@ namespace ATS.Helpers
             List<ErrorModel> errors = new List<ErrorModel>();
             try
             {
-                FileStream fs = new FileStream(path + _FILENAME, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 fs.Close();
 
-                using (StreamReader reader = new StreamReader(path + _FILENAME))
+                using (StreamReader reader = new StreamReader(path))
                 {
                     string[] _arrayData = new string[4];
                     string _tempData;
