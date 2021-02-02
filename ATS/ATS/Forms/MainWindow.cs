@@ -174,6 +174,7 @@ namespace ATS
             else
             {
                 txtVALRBidPrice.Text = text;
+
             }
         }
 
@@ -714,14 +715,14 @@ namespace ATS
                     }
 
                     if (!string.IsNullOrEmpty(VBP.ToString()))
-                        SetVALRBidPriceText(VBP.ToString());
+                        SetVALRBidPriceText(VBP.ToString("0.00"));
 
                     if (!string.IsNullOrEmpty(BAP.ToString()))
-                        SetBitstampAskPriceText(BAP.ToString());
+                        SetBitstampAskPriceText(BAP.ToString("0.00"));
 
-                    SetHighestMarginText(HM.ToString());
-                    SetCurrentMarginText(CM.ToString());
-                    SetBitstampConvertedPriceText(BCP.ToString());
+                    SetHighestMarginText(HM.ToString("0.00"));
+                    SetCurrentMarginText(CM.ToString("0.00"));
+                    SetBitstampConvertedPriceText(BCP.ToString("0.00"));
                 }
                 catch (Exception ex)
                 {
@@ -789,7 +790,7 @@ namespace ATS
                                     // TODO: Notify on Status
                                     SetNotification("Order Status: " + orderStatusVALR.orderStatusType, NotificationType.SUCCESS, "VALR", orderStatusVALR.orderType);
                                     totalSellBTI += Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture);
-                                    SetSellTotal(totalSellBTI.ToString());
+                                    SetSellTotal(totalSellBTI.ToString("0.00"));
                                 }
                                 else
                                 {
@@ -848,7 +849,7 @@ namespace ATS
                                     SetNotification("Order Status: " + bitstampMarketOrderStatus.status, NotificationType.SUCCESS, "BITSTAMP", "Amount Remaining: " + bitstampMarketOrderStatus.amount_remaining);
 
                                     totalBuyBTI += Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture);
-                                    SetBuyTotal(totalBuyBTI.ToString());
+                                    SetBuyTotal(totalBuyBTI.ToString("0.00"));
                                 }
                                 else
                                 {
@@ -896,6 +897,5 @@ namespace ATS
         }
 
         #endregion
-
     }
 }
