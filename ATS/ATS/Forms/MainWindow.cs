@@ -664,6 +664,12 @@ namespace ATS
             Properties.Settings.Default.Save();
         }
 
+        private void btn_ResetBuySellTotal_Click(object sender, EventArgs e)
+        {
+            txtBuyTotal.Text = "0.00";
+            txtSellTotal.Text = "0.00";
+        }
+
         #endregion
 
         #region Helpers
@@ -895,5 +901,7 @@ namespace ATS
         }
 
         #endregion
+
+      
     }
 }

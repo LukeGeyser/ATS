@@ -92,6 +92,7 @@
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.lbl_errorLog = new System.Windows.Forms.Label();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_ResetBuySellTotal = new System.Windows.Forms.Button();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -361,6 +362,7 @@
             // 
             // pnl_monitor
             // 
+            this.pnl_monitor.Controls.Add(this.btn_ResetBuySellTotal);
             this.pnl_monitor.Controls.Add(this.label17);
             this.pnl_monitor.Controls.Add(this.label16);
             this.pnl_monitor.Controls.Add(this.label15);
@@ -507,7 +509,7 @@
             // 
             // btn_ResetHighestMargin
             // 
-            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(719, 64);
+            this.btn_ResetHighestMargin.Location = new System.Drawing.Point(719, 28);
             this.btn_ResetHighestMargin.Name = "btn_ResetHighestMargin";
             this.btn_ResetHighestMargin.Size = new System.Drawing.Size(99, 43);
             this.btn_ResetHighestMargin.TabIndex = 12;
@@ -695,6 +697,16 @@
             // 
             this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
             // 
+            // btn_ResetBuySellTotal
+            // 
+            this.btn_ResetBuySellTotal.Location = new System.Drawing.Point(719, 98);
+            this.btn_ResetBuySellTotal.Name = "btn_ResetBuySellTotal";
+            this.btn_ResetBuySellTotal.Size = new System.Drawing.Size(99, 43);
+            this.btn_ResetBuySellTotal.TabIndex = 34;
+            this.btn_ResetBuySellTotal.Text = "Reset Buy/Sell Total";
+            this.btn_ResetBuySellTotal.UseVisualStyleBackColor = true;
+            this.btn_ResetBuySellTotal.Click += new System.EventHandler(this.btn_ResetBuySellTotal_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -785,6 +797,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btn_ResetBuySellTotal;
     }
 }
 
