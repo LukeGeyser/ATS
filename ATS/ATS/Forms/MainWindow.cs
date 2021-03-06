@@ -294,8 +294,6 @@ namespace ATS
             else
             {
                 btn_ActivateTrading.Enabled = true;
-                totalSellBTI = 0.0;
-                totalBuyBTI = 0.0;
                 SetSellTotal(totalSellBTI.ToString());
                 SetBuyTotal(totalBuyBTI.ToString());
             }
@@ -374,7 +372,7 @@ namespace ATS
             if (txtBuyTotal.InvokeRequired)
             {
                 SetBuyTotalCallback d = new SetBuyTotalCallback(SetBuyTotal);
-                Invoke(d, new object[] { });
+                Invoke(d, new object[] { text });
             }
             else
             {
@@ -392,7 +390,7 @@ namespace ATS
             if (txtSellTotal.InvokeRequired)
             {
                 SetSellTotalCallback d = new SetSellTotalCallback(SetSellTotal);
-                Invoke(d, new object[] { });
+                Invoke(d, new object[] { text });
             }
             else
             {
@@ -789,8 +787,8 @@ namespace ATS
                                 {
                                     // TODO: Notify on Status
                                     SetNotification("Order Status: " + orderStatusVALR.orderStatusType, NotificationType.SUCCESS, "VALR", orderStatusVALR.orderType);
-                                    totalSellBTI += Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture);
-                                    SetSellTotal(totalSellBTI.ToString("0.00"));
+                                    totalSellBTI += Convert.ToDouble(txtBTI.Text, CultureInfo.InvariantCulture);
+                                    SetSellTotal(totalSellBTI.ToString("0.000"));
                                 }
                                 else
                                 {
@@ -848,8 +846,8 @@ namespace ATS
                                     // TODO: Notify on Status
                                     SetNotification("Order Status: " + bitstampMarketOrderStatus.status, NotificationType.SUCCESS, "BITSTAMP", "Amount Remaining: " + bitstampMarketOrderStatus.amount_remaining);
 
-                                    totalBuyBTI += Convert.ToDouble(txtBTL.Text, CultureInfo.InvariantCulture);
-                                    SetBuyTotal(totalBuyBTI.ToString("0.00"));
+                                    totalBuyBTI += Convert.ToDouble(txtBTI.Text, CultureInfo.InvariantCulture);
+                                    SetBuyTotal(totalBuyBTI.ToString("0.000"));
                                 }
                                 else
                                 {
