@@ -19,7 +19,7 @@ namespace ATS.Services
             var _timestamp = BitStampValidator.GetTimeStamp();
            
             IRestResponse response;
-            string currency_pair = "btceur";
+            string currency_pair = "btcusd";
             try
             {
                 HttpWebRequest getApiRequest = (HttpWebRequest)HttpWebRequest.Create("https://www.bitstamp.net/api/v2/order_book/" + currency_pair + "/");
