@@ -59,6 +59,7 @@
             this.lbl_tradeIncre = new System.Windows.Forms.Label();
             this.lbl_ExhcangeRate = new System.Windows.Forms.Label();
             this.pnl_monitor = new System.Windows.Forms.Panel();
+            this.btn_ResetBuySellTotal = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -92,7 +93,6 @@
             this.dgv_errorLog = new System.Windows.Forms.DataGridView();
             this.lbl_errorLog = new System.Windows.Forms.Label();
             this.mainWindowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_ResetBuySellTotal = new System.Windows.Forms.Button();
             this.pnl_Inputs.SuspendLayout();
             this.pnl_monitor.SuspendLayout();
             this.pnl_activations.SuspendLayout();
@@ -178,7 +178,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 25;
-            this.label6.Text = "EUR/ZAR";
+            this.label6.Text = "USD/ZAR";
             // 
             // txtBTL
             // 
@@ -391,6 +391,16 @@
             this.pnl_monitor.Size = new System.Drawing.Size(989, 170);
             this.pnl_monitor.TabIndex = 18;
             // 
+            // btn_ResetBuySellTotal
+            // 
+            this.btn_ResetBuySellTotal.Location = new System.Drawing.Point(719, 98);
+            this.btn_ResetBuySellTotal.Name = "btn_ResetBuySellTotal";
+            this.btn_ResetBuySellTotal.Size = new System.Drawing.Size(99, 43);
+            this.btn_ResetBuySellTotal.TabIndex = 34;
+            this.btn_ResetBuySellTotal.Text = "Reset Buy/Sell Total";
+            this.btn_ResetBuySellTotal.UseVisualStyleBackColor = true;
+            this.btn_ResetBuySellTotal.Click += new System.EventHandler(this.btn_ResetBuySellTotal_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -443,7 +453,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(30, 13);
             this.label12.TabIndex = 30;
-            this.label12.Text = "EUR";
+            this.label12.Text = "USD";
             // 
             // label11
             // 
@@ -696,16 +706,6 @@
             // mainWindowBindingSource
             // 
             this.mainWindowBindingSource.DataSource = typeof(ATS.MainWindow);
-            // 
-            // btn_ResetBuySellTotal
-            // 
-            this.btn_ResetBuySellTotal.Location = new System.Drawing.Point(719, 98);
-            this.btn_ResetBuySellTotal.Name = "btn_ResetBuySellTotal";
-            this.btn_ResetBuySellTotal.Size = new System.Drawing.Size(99, 43);
-            this.btn_ResetBuySellTotal.TabIndex = 34;
-            this.btn_ResetBuySellTotal.Text = "Reset Buy/Sell Total";
-            this.btn_ResetBuySellTotal.UseVisualStyleBackColor = true;
-            this.btn_ResetBuySellTotal.Click += new System.EventHandler(this.btn_ResetBuySellTotal_Click);
             // 
             // MainWindow
             // 

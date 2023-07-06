@@ -14,12 +14,12 @@ namespace ATS.Services
 {
    public static class BitStampService
     {
+        static readonly string currency_pair = "btcusd";
         public async static Task<string> Get(string ApiKey, string clientID)
         {
             var _timestamp = BitStampValidator.GetTimeStamp();
            
             IRestResponse response;
-            string currency_pair = "btcusd";
             try
             {
                 HttpWebRequest getApiRequest = (HttpWebRequest)HttpWebRequest.Create("https://www.bitstamp.net/api/v2/order_book/" + currency_pair + "/");
@@ -62,12 +62,12 @@ namespace ATS.Services
 
             var nonce = Guid.NewGuid().ToString();
 
-            var signature = BitStampValidator.CreateSignatureV2(apiKeySecret, ApiKey, "POST", "www.bitstamp.net", "/api/v2/buy/market/btceur/", "", "application/x-www-form-urlencoded", nonce, _timestamp, "v2", $"amount={amount}");
+            var signature = BitStampValidator.CreateSignatureV2(apiKeySecret, ApiKey, "POST", "www.bitstamp.net", $"/api/v2/buy/market/{currency_pair}/", "", "application/x-www-form-urlencoded", nonce, _timestamp, "v2", $"amount={amount}");
 
             IRestResponse response;
             try
             {
-                var client = new RestClient("https://www.bitstamp.net/api/v2/buy/market/btceur/");
+                var client = new RestClient($"https://www.bitstamp.net/api/v2/buy/market/{currency_pair}/");
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("X-Auth", $"BITSTAMP {ApiKey}");
